@@ -118,7 +118,7 @@ void	rra(stack **stack_a)
 		}
 		tmp = tmp->next;
 	}
-	tmp = *stack_a;
+	*stack_a = tmp;
 	while (tmp)
 	{
 		if (tmp->next == *stack_a)
@@ -128,4 +128,31 @@ void	rra(stack **stack_a)
 		}
 		tmp = tmp->next;
 	}
+}
+
+void	rrb(stack **stack_b)
+{
+	stack *tmp;
+
+	tmp = *stack_b;
+	while (tmp)
+	{
+		if (tmp->next == NULL)
+		{
+			tmp->next = *stack_b;
+			break;
+		}
+		tmp = tmp->next;
 	}
+	*stack_a = tmp;
+	while (tmp)
+	{
+		if (tmp->next == *)
+		{
+			tmp->next = NULL;
+			break;
+		}
+		tmp = tmp->next;
+	}
+}
+
