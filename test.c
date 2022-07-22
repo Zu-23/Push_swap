@@ -57,21 +57,18 @@
 // 		//case 3: str = "343-4235" exit with error (u can use ft_isdigit but change it so it can accept - and + as digit)
 // 		//case 4: str = "342 12 5" we should handle each int and put it into each case
 // 		//we create super_atoi
-// 	ar = (int *) malloc(sizeof(int)*(argc - 1));
 // 	while(argv[++i])
 // 	{
-// 		super_atoi(&ar, super_strlen(argv[i]));s
+// 		super_strlen(argv[i])
+// 		super_atoi(&ar, argv[i]);
 // 	}
 // checkDouble(ar, argc);
-//}
+// }
 int main(int c, char **v)
 {
 	int i = 0;
-	while (i < c)
-	{
-		printf("%s\n",v[i]);
-		i++;
-	}
+	i
+	while ()
 
 }
 
