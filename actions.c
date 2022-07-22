@@ -1,5 +1,23 @@
 #include<stdlib.h>
-#include<header.h>
+#include "header.h"
+
+typedef struct stack
+{
+	int num;
+	struct stack *next;
+}stack;
+
+void	push(int num, stack **top)
+{
+	stack *tmp;
+
+	tmp = malloc(sizeof(stack));
+	if (!tmp)
+		exit (1);
+	tmp->num = num;
+	tmp->next = *top;
+	*top = tmp;
+}
 
 int	Empty(stack *stack)
 {
@@ -8,6 +26,7 @@ int	Empty(stack *stack)
 	else
 		return (0);
 }
+
 void	Delete(stack **Pstk )
 {
 	stack	*tmp;
@@ -21,6 +40,7 @@ void	Delete(stack **Pstk )
 	}
 	
 }
+
 void	sa(stack *stk)
 {
 	int var;
@@ -53,16 +73,16 @@ void	pa(stack **stack_b, stack **stack_a)
 {
 	if (Empty(*stack_b) == 1)
 		return (1);
-	push((*stack_b)->num, *stack_a);
-	Delete(&stack_b);
+	push((*stack_b)->num, stack_a);
+	Delete(stack_b);
 }
 
 void	pa(stack **stack_b, stack **stack_a)
 {
 	if (Empty(*stack_a) == 1)
 		return (1);
-	push((*stack_a)->num, *stack_b);
-	Delete(&stack_a);
+	push((*stack_a)->num, stack_b);
+	Delete(stack_a);
 }
 
 void	ra(stack **stack_a)
@@ -101,8 +121,8 @@ void	rb(stack **stack_b)
 
 void	rr(stack **stack_a, stack **stack_b)
 {
-	rb(*stack_b);
-	ra(*stack_a);
+	rb(stack_b);
+	ra(stack_a);
 }
 void	rra(stack **stack_a)
 {
@@ -144,7 +164,7 @@ void	rrb(stack **stack_b)
 		}
 		tmp = tmp->next;
 	}
-	*stack_a = tmp;
+	*stack_b = tmp;
 	while (tmp)
 	{
 		if (tmp->next == *)
@@ -155,4 +175,10 @@ void	rrb(stack **stack_b)
 		tmp = tmp->next;
 	}
 }
+void rrr(stack **stack_a, stack **stack_b)
+{
+	rra(*stack_a);
+	rrb(*stack_b);
+}
 
+//treat the case of argument has : "3 234 12" the case of letters and the case of doubled numbers

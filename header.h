@@ -2,8 +2,8 @@
 #define HEADER_H
 typedef struct stack
 {
-	int num;
-	struct stack *next;
+	int				num;
+	struct stack	*next;
 }stack;
 
 #endif
