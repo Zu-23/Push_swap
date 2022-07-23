@@ -5,15 +5,15 @@
 
 
 
-
+// The first argument should be at the top of the
+// stack (be careful about the order).
 int main(int argc, char **argv)
 {
-	int i;
-	int	pt;
-	stack *stack_a;
-	stack *stack_b;
+	int	*int_array;
+	int	size;
 
-	pt = convert_string(argc,argv);
-	
+	size = super_strlen(argv);
+	super_atoi(&int_array, argv, size);
+	checkDouble(&int_array,)
 }
 

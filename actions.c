@@ -1,5 +1,7 @@
 #include<stdlib.h>
 #include "header.h"
+//The first argument should be at the top of the
+//stack (be careful about the order).
 
 typedef struct stack
 {
