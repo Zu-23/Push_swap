@@ -27,6 +27,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
+
 // void	checkDouble(int *pt)
 // {
 // 	int	i;
@@ -69,35 +70,38 @@ int	AllSpaces(char c)
 }
 
 
-int	super_strlen(char **str)
+int	super_strlen(char **str, int argc)
 {
 	int	i;
 	int	count;
 	int	k;
 
-	i = 0;
+	i = 1;
 	count = 0;
 	k = 0;
-	while (str[i])
+	
+	while (i < argc)
 	{
-		while (ft_isdigit(str[i][k]) == 1 || str[i][k] == '-' || str[i][k] == '+')
+		while (ft_isdigit(str[i][k]) == 1 || str[i][k] == '-')
 		{
 			k++;
-			if (AllSpaces(str[i][k]) == 0)
+			if (str[i][k] == ' ')
 			{
 				count++;
 				k++;
 			}
+			else if (str[i][k] == '\0')
+				count++;
 		}
 		if (str[i][k] != '\0')
 		{
 			printf("Error\n");
 			exit(1);
 		}
+		k = 0;
 		i++;	
 	}
 	return (count);
-
 }
 
 int	ft_sign(char c)
@@ -113,53 +117,62 @@ int	ft_sign(char c)
 	return (sign);
 }
 
-//over 25 lines and 5 variables need fixing
-void	super_atoi(int **ar, char **ptr, int count)
+void	super_atoi(int **ar, char *ptr, int count)
 {
 	long		i;
-	long		ret;
+	int			ret;
 	int			sign;
-	int			k;
+	static int	k;
 	int			j;
 
 	i = 0;
 	ret = 0;
-	k = -1;
 	j = 0;
-	*ar = malloc(sizeof(int) * count);
-	while(ptr[++i])
+	k = 0;
+	printf("value of k %d",k);
+	if (!*ar)
+		*ar = malloc(sizeof(int) * count);
+	while(ptr[i])
 	{
-		if (ptr[i][j] == '-' || ptr[i][j] == '+')
+		if (ptr[i] == '-' || ptr[i] == '+')
 		{
-			if (ptr[i][j] == '-')
+			if (ptr[i] == '-')
 				sign *= -1;
-			j++;
+			i++;
 		}
-		while (ft_isdigit(ptr[i][j]) == 1)
+		while (ft_isdigit(ptr[i]) == 1)
 		{
-			ret = ret * 10 + (ptr[i][j] - 48);
-			j++;
+			ret = ret * 10 + (ptr[i] - 48);
+			i++;
 		}
-		if (AllSpaces(ptr[i][j]) == 0)
+		if (AllSpaces(ptr[i]) == 0)
 		{
-			j++;
+			i++;
 			sign = 1;
-			*ar[++k] = ret;
+			ar[0][k] = ret;
+			ret = 0;
+			k++;
+			printf("val ar %d\n",ar[0][k]);
 		}
 	}
+	ar[0][k] = ret;
+	printf("val ar  %d\n",ar[0][k]);
+	k++;
 }
+
 
 int main(int argc, char **argv)
 {
 	int	*int_array;
 	int	size;
+	int i = 1;
 
-	size = super_strlen(argv);
-	super_atoi(&int_array, argv, size);
-	int i = 0;
-	while (i < size)
+	int_array = NULL;
+	size = super_strlen(argv,argc);
+	while (i < argc)
 	{
-		printf("%d\n",int_array[i]);
+		super_atoi(&int_array, argv[i], size);
 		i++;
 	}
+	
 }
