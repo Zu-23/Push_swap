@@ -10,46 +10,61 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include<stdio.h>
+#include<stdlib.h>
 
-void	checkDouble(int *pt)
+typedef struct stack
 {
-	int	i;
-	stack *stack_a;
-	stack *beg;
+	int num;
+	struct stack *next;
+}stack;
 
-	stack_a = NULL;
-	i = 0;
-	push(pt[0], &stack_a);
-	beg = stack_a;
-	while (pt[i])
-	{
-		if (pt[i] != stack_a->num)
-		{
-			if (stack_a->next == NULL)
-			{
-				push(pt[i], &stack_a);
-				i++;
-				stack_a = beg;
-			}
-			else
-				stack_a = stack_a->next;
-		}
-		else if (pt[i] == stack_a->num)
-		{
-			i++;
-			stack_a = beg;
-		}
-	}
-	free(pt);
-
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
 }
+
+// void	checkDouble(int *pt)
+// {
+// 	int	i;
+// 	stack *stack_a;
+// 	stack *beg;
+
+// 	stack_a = NULL;
+// 	i = 0;
+// 	push(pt[0], &stack_a);
+// 	beg = stack_a;
+// 	while (pt[i])
+// 	{
+// 		if (pt[i] != stack_a->num)
+// 		{
+// 			if (stack_a->next == NULL)
+// 			{
+// 				push(pt[i], &stack_a);
+// 				i++;
+// 				stack_a = beg;
+// 			}
+// 			else
+// 				stack_a = stack_a->next;
+// 		}
+// 		else if (pt[i] == stack_a->num)
+// 		{
+// 			i++;
+// 			stack_a = beg;
+// 		}
+// 	}
+// 	free(pt);
+
+// }
 
 int	AllSpaces(char c)
 {
 	if ((c == '\t') || (c == '\n') || (c == '\v')
 		|| (c == '\f') || (c == ' ') || (c == '\r'))
-		return (0)
+		return (0);
 	return (1);
 }
 
@@ -98,6 +113,7 @@ int	ft_sign(char c)
 	return (sign);
 }
 
+//over 25 lines and 5 variables need fixing
 void	super_atoi(int **ar, char **ptr, int count)
 {
 	long		i;
@@ -130,5 +146,20 @@ void	super_atoi(int **ar, char **ptr, int count)
 			sign = 1;
 			*ar[++k] = ret;
 		}
+	}
+}
+
+int main(int argc, char **argv)
+{
+	int	*int_array;
+	int	size;
+
+	size = super_strlen(argv);
+	super_atoi(&int_array, argv, size);
+	int i = 0;
+	while (i < size)
+	{
+		printf("%d\n",int_array[i]);
+		i++;
 	}
 }
