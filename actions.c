@@ -1,7 +1,5 @@
 #include<stdlib.h>
 #include "header.h"
-//The first argument should be at the top of the
-//stack (be careful about the order).
 
 typedef struct stack
 {
@@ -169,7 +167,7 @@ void	rrb(stack **stack_b)
 	*stack_b = tmp;
 	while (tmp)
 	{
-		if (tmp->next == *)
+		if (tmp->next == *stack_b)
 		{
 			tmp->next = NULL;
 			break;
@@ -177,10 +175,9 @@ void	rrb(stack **stack_b)
 		tmp = tmp->next;
 	}
 }
+
 void rrr(stack **stack_a, stack **stack_b)
 {
 	rra(*stack_a);
 	rrb(*stack_b);
 }
-
-//treat the case of argument has : "3 234 12" the case of letters and the case of doubled numbers

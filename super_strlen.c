@@ -18,18 +18,6 @@ typedef struct stack
 	struct stack *next;
 }stack;
 
-void	linkStack(int num, stack **top)
-{
-	stack *tmp;
-
-	tmp = malloc(sizeof(stack));
-	if (!tmp)
-		exit(1);
-	tmp->num = num;
-	tmp->next = NULL;
-	*top->next = tmp;
-	*top = tmp;
-}
 void	push(int num, stack **top)
 {
 	stack *tmp;
@@ -39,7 +27,10 @@ void	push(int num, stack **top)
 		exit (1);
 	tmp->num = num;
 	tmp->next = NULL;
-	*top = tmp;
+	if (*top != NULL )
+		(*top)->next = tmp;
+	else	
+		*top = tmp;
 }
 
 int	ft_isdigit(int c)
@@ -51,39 +42,41 @@ int	ft_isdigit(int c)
 }
 
 
-void	checkDouble(int *pt)
+void	checkDouble(int *pt, int size)
 {
 	int	i;
 	stack *stack_a;
 	stack *head;
-	stack *tmp;
 
 	stack_a = NULL;
 	i = 0;
 	push(pt[0], &stack_a);
 	head = stack_a;
-	printf("add of head %p\n",head);
-	//printf("linked list %d\n",head->num);
-	while (pt[i])
+	while (i < size)
 	{
 		if (pt[i] != stack_a->num)
 		{
 			if (stack_a->next == NULL)
 			{
-				linkStack(pt[i], &tmp);
+				push(pt[i], &stack_a);
 				i++;
+				stack_a = head; 
 			}
 			else
-				tmp = stack_a->next;
+				stack_a = stack_a->next;
 		}
 		else if (pt[i] == stack_a->num)
 		{
 			i++;
-			tmp = head;
+			stack_a = head;
 		}
 	}
-		free(pt);
-
+	while (stack_a)
+    {
+      printf("%d\n",stack_a->num);
+      stack_a = stack_a->next;
+    }
+	free(pt);
 }
 
 int	AllSpaces(char c)
@@ -129,26 +122,13 @@ int	super_strlen(char **str, int argc)
 	return (count);
 }
 
-int	ft_sign(char c)
-{
-	int	sign;
-
-	sign = 1;
-	if (c == '-' || c == '+')
-		{
-			if (c == '-')
-				sign *= -1;
-		}
-	return (sign);
-}
-
 void    super_atoi(int **ar, char *ptr, int count)
 {
-    long        i;
-    int            ret;
-    int            sign;
-    static int    k;
-    int            j;
+    long			i;
+    int				ret;
+    int				sign;
+    static int		k;
+    int				j;
 
     i = 0;
     ret = 0;
@@ -180,8 +160,7 @@ void    super_atoi(int **ar, char *ptr, int count)
     
     }
     ar[0][k] = ret * sign;
-    k++;
-    
+    k++; 
 }
 
     
@@ -192,9 +171,6 @@ int main(int argc, char **argv)
 	int i = 0;
 	while (++i < argc)
 		super_atoi(&array,argv[i],size);
-	i = -1;
-	while (++i < size)
-		printf("%d\n",array[i]);
-	checkDouble(array);
+	 checkDouble(array, size);
 
 }
