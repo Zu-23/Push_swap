@@ -12,12 +12,35 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-
 typedef struct stack
 {
 	int num;
 	struct stack *next;
 }stack;
+
+void	linkStack(int num, stack **top)
+{
+	stack *tmp;
+
+	tmp = malloc(sizeof(stack));
+	if (!tmp)
+		exit(1);
+	tmp->num = num;
+	tmp->next = NULL;
+	*top->next = tmp;
+	*top = tmp;
+}
+void	push(int num, stack **top)
+{
+	stack *tmp;
+
+	tmp = malloc(sizeof(stack));
+	if (!tmp)
+		exit (1);
+	tmp->num = num;
+	tmp->next = NULL;
+	*top = tmp;
+}
 
 int	ft_isdigit(int c)
 {
@@ -28,38 +51,40 @@ int	ft_isdigit(int c)
 }
 
 
-// void	checkDouble(int *pt)
-// {
-// 	int	i;
-// 	stack *stack_a;
-// 	stack *beg;
+void	checkDouble(int *pt)
+{
+	int	i;
+	stack *stack_a;
+	stack *head;
+	stack *tmp;
 
-// 	stack_a = NULL;
-// 	i = 0;
-// 	push(pt[0], &stack_a);
-// 	beg = stack_a;
-// 	while (pt[i])
-// 	{
-// 		if (pt[i] != stack_a->num)
-// 		{
-// 			if (stack_a->next == NULL)
-// 			{
-// 				push(pt[i], &stack_a);
-// 				i++;
-// 				stack_a = beg;
-// 			}
-// 			else
-// 				stack_a = stack_a->next;
-// 		}
-// 		else if (pt[i] == stack_a->num)
-// 		{
-// 			i++;
-// 			stack_a = beg;
-// 		}
-// 	}
-// 	free(pt);
+	stack_a = NULL;
+	i = 0;
+	push(pt[0], &stack_a);
+	head = stack_a;
+	printf("add of head %p\n",head);
+	//printf("linked list %d\n",head->num);
+	while (pt[i])
+	{
+		if (pt[i] != stack_a->num)
+		{
+			if (stack_a->next == NULL)
+			{
+				linkStack(pt[i], &tmp);
+				i++;
+			}
+			else
+				tmp = stack_a->next;
+		}
+		else if (pt[i] == stack_a->num)
+		{
+			i++;
+			tmp = head;
+		}
+	}
+		free(pt);
 
-// }
+}
 
 int	AllSpaces(char c)
 {
@@ -117,62 +142,59 @@ int	ft_sign(char c)
 	return (sign);
 }
 
-void	super_atoi(int **ar, char *ptr, int count)
+void    super_atoi(int **ar, char *ptr, int count)
 {
-	long		i;
-	int			ret;
-	int			sign;
-	static int	k;
-	int			j;
+    long        i;
+    int            ret;
+    int            sign;
+    static int    k;
+    int            j;
 
-	i = 0;
-	ret = 0;
-	j = 0;
-	k = 0;
-	printf("value of k %d",k);
-	if (!*ar)
-		*ar = malloc(sizeof(int) * count);
-	while(ptr[i])
-	{
-		if (ptr[i] == '-' || ptr[i] == '+')
-		{
-			if (ptr[i] == '-')
-				sign *= -1;
-			i++;
-		}
-		while (ft_isdigit(ptr[i]) == 1)
-		{
-			ret = ret * 10 + (ptr[i] - 48);
-			i++;
-		}
-		if (AllSpaces(ptr[i]) == 0)
-		{
-			i++;
-			sign = 1;
-			ar[0][k] = ret;
-			ret = 0;
-			k++;
-			printf("val ar %d\n",ar[0][k]);
-		}
-	}
-	ar[0][k] = ret;
-	printf("val ar  %d\n",ar[0][k]);
-	k++;
+    i = 0;
+    ret = 0;
+    j = 0;
+    sign = 1;
+    if (!*ar)
+        *ar = malloc(sizeof(int) * count);
+    while(ptr[i])
+    {
+        if (ptr[i] == '-' || ptr[i] == '+')
+        {
+            if (ptr[i] == '-')
+                sign *= -1;
+            i++;
+        }
+        while (ptr[i] >= '0' && ptr[i] <= '9')
+        {
+            ret = ret * 10 + (ptr[i] - 48);
+            i++;
+        }
+        if (AllSpaces(ptr[i]) == 0)
+        {
+            i++;
+            ar[0][k] = ret * sign;
+            sign = 1;
+            ret = 0;
+            k++;
+        }
+    
+    }
+    ar[0][k] = ret * sign;
+    k++;
+    
 }
 
-
+    
 int main(int argc, char **argv)
 {
-	int	*int_array;
-	int	size;
-	int i = 1;
+	int *array = NULL;
+	int size = super_strlen(argv,argc);
+	int i = 0;
+	while (++i < argc)
+		super_atoi(&array,argv[i],size);
+	i = -1;
+	while (++i < size)
+		printf("%d\n",array[i]);
+	checkDouble(array);
 
-	int_array = NULL;
-	size = super_strlen(argv,argc);
-	while (i < argc)
-	{
-		super_atoi(&int_array, argv[i], size);
-		i++;
-	}
-	
 }
