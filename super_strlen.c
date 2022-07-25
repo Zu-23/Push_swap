@@ -12,13 +12,56 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-typedef struct stack
+typedef struct node
 {
 	int num;
 	struct stack *next;
 }stack;
 
-void	push(int num, stack **top)
+int	Listduplicate(stack **stack_a)
+{
+	stack *tmp;
+	stack *head;
+
+	tmp = NULL;
+	head = *stack_a;
+	while (head)
+	{
+
+	push(head->num, &tmp);
+	}
+	
+}
+
+void sort(stack** head)
+{
+  stack	*current;
+  stack	*index;
+  int	temp;
+
+  current = *head;
+  if (head == NULL)
+    exit(1);
+  else 
+  {
+	  while (current != NULL)
+	  {
+		  index = current->next;
+		  while (index != NULL)
+		  {
+			  if (current->num > index->num)
+			  {
+				  temp = current->num;
+				  current->num = index->num;
+				  index->num = temp;
+			  }
+			  index = index->next;
+		  }
+		current = current->next;
+	  }
+  }
+}
+void	Sortpush(int num, stack **top)
 {
 	stack *tmp;
 
@@ -58,7 +101,7 @@ void	checkDouble(int *pt, int size)
 		{
 			if (stack_a->next == NULL)
 			{
-				push(pt[i], &stack_a);
+				Sortpush(pt[i], &stack_a);
 				i++;
 				stack_a = head; 
 			}
@@ -71,6 +114,12 @@ void	checkDouble(int *pt, int size)
 			stack_a = head;
 		}
 	}
+	while (stack_a)
+    {
+      printf("%d\n",stack_a->num);
+      stack_a = stack_a->next;
+    }
+	ra(&head);
 	while (stack_a)
     {
       printf("%d\n",stack_a->num);
@@ -162,8 +211,16 @@ void    super_atoi(int **ar, char *ptr, int count)
     ar[0][k] = ret * sign;
     k++; 
 }
+void	SortList(stack **stack)
+{
+	stack *tmp;
+	stack *current;
 
-    
+	if (!*stack)
+		exit(1);
+	
+}
+
 int main(int argc, char **argv)
 {
 	int *array = NULL;

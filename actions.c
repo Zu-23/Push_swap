@@ -87,16 +87,22 @@ void	pa(stack **stack_b, stack **stack_a)
 
 void	ra(stack **stack_a)
 {
-	stack *tmp;
+	stack	*tmp;
+	stack	*top;
 
+	top = (*stack_a)->next;	
 	tmp = *stack_a;
 	while (tmp)
 	{
 		if (tmp->next == NULL)
+		{
 			tmp->next = *stack_a;
+			break;
+		}
 		tmp = tmp->next;
 	}
 	(*stack_a)->next = NULL;
+	*stack_a = top;
 }
 
 void	rb(stack **stack_b)
