@@ -18,49 +18,113 @@ typedef struct node
 	struct stack *next;
 }stack;
 
-int	Listduplicate(stack **stack_a)
+typedef struct chunk
+{
+	int	mid;
+	int	elem;
+}chunk;
+
+void	sortStack(stack **stack_a, stack **stack_b, chunk a)
 {
 	stack *tmp;
-	stack *head;
+	int	i;
 
-	tmp = NULL;
+	i = 0;
+	tmp = *stack_a;
+	while (i < elem)
+	{
+		 if (tmp -> num < mid)
+		 {
+			pushStack(stack_a, stack_b);
+			i++;
+		 }
+		 else
+		 	rotate(stack_a);
+	}
+	List_to_array(stack_a);
+}
+
+int	List_to_array(stack **stack_a)
+{
+	int	size;
+	stack *head;
+	int	*ar;
+	int	i;
+
+	i = 0;
+	head = *stack_a;
+	size = 0;
+	while (head)
+	{
+		size++;
+		head = head -> next;
+	}
+	ar = malloc(sizeof(int) * size);
 	head = *stack_a;
 	while (head)
 	{
-
-	push(head->num, &tmp);
+		ar[i] = head -> num;
+		head = head -> next;
+		i++;
 	}
-	
+	sort(ar, size);
+	free(ar);
 }
-
-void sort(stack** head)
+int sort(int *ar, int size)
 {
-  stack	*current;
-  stack	*index;
-  int	temp;
+    int 	i;
+    int 	j;
+    int 	tmp;
+	chunk	a;
 
-  current = *head;
-  if (head == NULL)
-    exit(1);
-  else 
-  {
-	  while (current != NULL)
-	  {
-		  index = current->next;
-		  while (index != NULL)
-		  {
-			  if (current->num > index->num)
-			  {
-				  temp = current->num;
-				  current->num = index->num;
-				  index->num = temp;
-			  }
-			  index = index->next;
-		  }
-		current = current->next;
-	  }
-  }
+    i = 0;
+    j = 0;
+    while (j < size - 1)
+    {
+        while (i < size - j - 1)
+        {
+            if (ar[i] > ar[i + 1])
+            {
+                tmp = ar[i];
+                ar[i] = ar[i + 1];
+                ar[i + 1] = tmp;
+            }
+            i++;
+        }
+        j++;
+    }
+	a.mid = ar[size / 2];
+	a.elem = size / 2;
 }
+// void sort(stack** head)
+// {
+//   stack	*current;
+//   stack	*index;
+//   int	temp;
+
+//   current = *head;
+//   if (head == NULL)
+//     return ;
+//   else 
+//   {
+// 	  while (current != NULL)
+// 	  {
+// 		  index = current->next;
+// 		  while (index != NULL)
+// 		  {
+// 			  if (current->num > index->num)
+// 			  {
+// 				  temp = current->num;
+// 				  current->num = index->num;
+// 				  index->num = temp;
+// 			  }
+// 			  index = index->next;
+// 		  }
+// 		current = current->next;
+// 	  }
+//   }
+// }
+
 void	Sortpush(int num, stack **top)
 {
 	stack *tmp;
@@ -114,17 +178,6 @@ void	checkDouble(int *pt, int size)
 			stack_a = head;
 		}
 	}
-	while (stack_a)
-    {
-      printf("%d\n",stack_a->num);
-      stack_a = stack_a->next;
-    }
-	ra(&head);
-	while (stack_a)
-    {
-      printf("%d\n",stack_a->num);
-      stack_a = stack_a->next;
-    }
 	free(pt);
 }
 
