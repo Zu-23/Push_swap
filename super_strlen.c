@@ -14,88 +14,141 @@
 #include<stdlib.h>
 typedef struct node
 {
-	int num;
-	struct stack *next;
+	int 		num;
+	struct node *next;
+}node;
+
+typedef struct stack
+{
+	node *head;
+	int size;
 }stack;
 
-typedef struct chunk
-{
-	int	mid;
-	int	elem;
-}chunk;
+//we can calculate the elemnts by making a function that keeps dividing 
+//the total number of the radnom number then keep dividing and storing
+// int	*treatElement(int elem)
+// {
+// 	int	i;
+// 	int	size;
+// 	int	*ar;
+// 	int	c;
 
-void	sortStack(stack **stack_a, stack **stack_b, chunk a)
-{
-	stack *tmp;
-	int	i;
+// 	i = elem;
+// 	while (i)
+// 	{
+// 		i /= 2;
+// 		size++;
+// 	}
+// 	ar = malloc(sizeof(int) * size);
+// 	i = elem;
+// 	while (c < size)
+// 	{
+// 		ar[c] = i / 2;
+// 		i /= 2;
+// 		c++;
+// 	}
+// 	return (ar);
+// }
 
-	i = 0;
-	tmp = *stack_a;
-	while (i < elem)
-	{
-		 if (tmp -> num < mid)
-		 {
-			pushStack(stack_a, stack_b);
-			i++;
-		 }
-		 else
-		 	rotate(stack_a);
-	}
-	List_to_array(stack_a);
-}
+// typedef struct chunk
+// {
+// 	int	mid;
+// 	int	elem; 10-5-3
+// }chunk;
 
-int	List_to_array(stack **stack_a)
-{
-	int	size;
-	stack *head;
-	int	*ar;
-	int	i;
 
-	i = 0;
-	head = *stack_a;
-	size = 0;
-	while (head)
-	{
-		size++;
-		head = head -> next;
-	}
-	ar = malloc(sizeof(int) * size);
-	head = *stack_a;
-	while (head)
-	{
-		ar[i] = head -> num;
-		head = head -> next;
-		i++;
-	}
-	sort(ar, size);
-	free(ar);
-}
-int sort(int *ar, int size)
-{
-    int 	i;
-    int 	j;
-    int 	tmp;
-	chunk	a;
+// void	sortStackB(stack **stack_a, stack **stack_b, int elem)
+// {
+// 	int	*elemPtr;
+// 	int	size;
+// 	int	mid;
 
-    i = 0;
-    j = 0;
-    while (j < size - 1)
-    {
-        while (i < size - j - 1)
-        {
-            if (ar[i] > ar[i + 1])
-            {
-                tmp = ar[i];
-                ar[i] = ar[i + 1];
-                ar[i + 1] = tmp;
-            }
-            i++;
-        }
-        j++;
-    }
-	a.mid = ar[size / 2];
-	a.elem = size / 2;
-}
+// 	elemPtr = treatElement(elem);
+// 	size = sizeof(elemPtr) / 4;
+// 	while (--size)
+// 	{
+// 		if (elemPtr[size] == 1)
+// 			pushStack(stack_a);
+// 		else
+// 		{
+// 			mid = chunkSorting(elemPtr[size], stack_b);
+// 			while (elemPtr[size])
+// 			{
+// 				if ((*stack_b) -> num > mid)
+// 				{
+// 					pushStack(stack_b, stack_a);
+// 					elemPtr[size] -= 1;
+// 				}
+// 			}
+// 		}
+// 	}
+// }
+
+// void	sortStackA(stack **stack_a, stack **stack_b, int mid, int elem)
+// {
+// 	stack 	*tmp;
+// 	int		i;
+
+// 	i = 0;
+// 	tmp = *stack_a;
+// 	if (!peepStack(stack_a))
+// 	{
+// 		miniSort(stack_a);
+// 		functosort();
+// 	}
+// 	//we need to keep track of the number of elem for each chunk
+// 	while (i < elem)
+// 	{
+// 		 if (tmp -> num < mid)
+// 		 {
+// 			pushStack(stack_a, stack_b);
+// 			i++;
+// 		 }
+// 		 else
+// 		 {
+// 			tmp = iterToLast(stack **stack_a);
+// 			if (tmp -> num >= mid)
+// 				rotate(stack_a);
+// 			else if (tmp -> num < mid)
+// 			{
+// 				reverse(stack_a);
+// 				pushStack(stack_a, stack_b);
+// 				i++;
+// 			}
+// 		 }
+// 	}
+// 	List_to_array(stack_a, stack_b);
+// }
+
+// int	List_to_array(stack **stack_a, stack **stack_b)
+// {
+// 	int	size;
+// 	stack *head;
+// 	int	*ar;
+// 	int	i;
+
+// 	i = 0;
+// 	head = *stack_a;
+// 	size = 0;
+// 	while (head)
+// 	{
+// 		size++;
+// 		head = head -> next;
+// 	}
+// 	ar = malloc(sizeof(int) * size);
+// 	head = *stack_a;
+// 	while (head)
+// 	{
+// 		ar[i] = head -> num;
+// 		head = head -> next;
+// 		i++;
+// 	}
+// 	i = sort(&ar, size);
+// 	size = ar[size / 2];
+// 	free(ar);
+// 	sortStack(stack_a, stack_b, size, i);
+// }
+
 // void sort(stack** head)
 // {
 //   stack	*current;
@@ -124,20 +177,120 @@ int sort(int *ar, int size)
 // 	  }
 //   }
 // }
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
-void	Sortpush(int num, stack **top)
+// int	find_max_ndx(stack *a)
+// {
+// 	int		max;
+// 	node	*tmp;
+// 	int		loc;
+// 	int		ndx;
+
+// 	tmp = a -> head;
+// 	max = tmp -> num;
+// 	ndx = 0;
+// 	loc = 0;
+// 	while (tmp)
+// 	{
+// 		if (tmp -> num > max)
+// 		{
+// 			max = tmp -> num;
+// 			ndx = loc;
+// 		}
+// 		loc++;
+// 		tmp = tmp -> next;
+// 	}
+// 	return (ndx);
+// }
+
+// void	go_to_index(stack *a, stack *b, int ndx)
+// {
+// 	node	*tmp;
+// 	int		i;
+// 	int		size;
+
+// 	tmp = a -> head;
+// 	i = 0;
+// 	size = a -> size;
+// 	while (i != ndx || size != ndx)
+// 	{
+// 		if (ndx <= size / 2)
+// 		{
+// 			rotate(a);
+// 			i++;
+// 		}
+// 		else if (ndx > size / 2)
+// 		{
+// 			reverse(a);
+// 			size--;	
+// 		}
+// 	}
+// 	pushStack(a, b);
+// }
+
+// void	sortstack_a(stack *a, stack *b)
+// {
+// 	int	ndx;
+
+// 	while (!Empty(a))
+// 	{
+// 		ndx = find_max_ndx(a);
+// 		go_to_index(a, ndx);
+// 		pushStack(a, b);
+// 	}
+// 	while (!Empty(b))
+// 		pushStack(b, a);
+// }
+
+// int sort(int **ar, int size)
+// {
+//     int 	i;
+//     int 	j;
+//     int 	tmp;
+
+//     i = 0;
+//     j = 0;
+//     while (j < size - 1)
+//     {
+//         while (i < size - j - 1)
+//         {
+//             if (*ar[i] > *ar[i + 1])
+//             {
+//                 tmp = *ar[i];
+//                 *ar[i] = *ar[i + 1];
+//                 *ar[i + 1] = tmp;
+//             }
+//             i++;
+//         }
+//         j++;
+//     }
+// 	return (size / 2);
+// }
+void	push(int num, stack *top)
 {
-	stack *tmp;
+	node *tmp;
 
-	tmp = malloc(sizeof(stack));
+	tmp = malloc(sizeof(node));
 	if (!tmp)
 		exit (1);
-	tmp->num = num;
-	tmp->next = NULL;
-	if (*top != NULL )
-		(*top)->next = tmp;
+	tmp -> num = num;
+	tmp -> next = top -> head;
+	top -> head = tmp;
+	top -> size += 1;
+}
+void	Sortpush(int num, stack *top)
+{
+	node *tmp;
+
+	tmp = malloc(sizeof(node));
+	if (!tmp)
+		exit (1);
+	tmp -> num = num;
+	tmp -> next = NULL;
+	if (top -> head != NULL )
+		top -> head -> next = tmp;
 	else	
-		*top = tmp;
+		top -> head = tmp;
 }
 
 int	ft_isdigit(int c)
@@ -148,34 +301,38 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-
 void	checkDouble(int *pt, int size)
 {
-	int	i;
-	stack *stack_a;
-	stack *head;
+	int		i;
+	stack	a;
+	node 	*top;
 
-	stack_a = NULL;
+	printf("checkdouble hello 1\n");
+	a.head = NULL;
+	printf("checkdouble hello 2\n");
 	i = 0;
-	push(pt[0], &stack_a);
-	head = stack_a;
+	top = a.head;
+	push(pt[0], &a);
 	while (i < size)
 	{
-		if (pt[i] != stack_a->num)
+		printf("inside of while\n");
+		if (pt[i] != a.head -> num)
 		{
-			if (stack_a->next == NULL)
+			printf("inside of IF \n");
+			if (a.head -> next == NULL)
 			{
-				Sortpush(pt[i], &stack_a);
+				Sortpush(pt[i], &a);
 				i++;
-				stack_a = head; 
+				a.head = top;
 			}
 			else
-				stack_a = stack_a->next;
+				a.head = a.head -> next;
 		}
-		else if (pt[i] == stack_a->num)
+		else if (pt[i] == a.head -> num)
 		{
+			printf("inside of if\n");
 			i++;
-			stack_a = head;
+			a.head = top;
 		}
 	}
 	free(pt);
@@ -264,23 +421,18 @@ void    super_atoi(int **ar, char *ptr, int count)
     ar[0][k] = ret * sign;
     k++; 
 }
-void	SortList(stack **stack)
-{
-	stack *tmp;
-	stack *current;
 
-	if (!*stack)
-		exit(1);
-	
-}
 
 int main(int argc, char **argv)
 {
 	int *array = NULL;
 	int size = super_strlen(argv,argc);
 	int i = 0;
+	
 	while (++i < argc)
 		super_atoi(&array,argv[i],size);
-	 checkDouble(array, size);
-
+	checkDouble(array, size);
+	i = 0;
+	while (i < size)
+		printf("%d\n",array[i++]);
 }
