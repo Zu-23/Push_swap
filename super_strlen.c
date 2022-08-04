@@ -263,7 +263,19 @@ void	pushStack(stack *stack_to_pull, stack *stack_to_push)
 	if (Empty(stack_to_pull))
 		return;
 	push(stack_to_pull -> head -> num, stack_to_push);
+	// printf("b->num %d a->num %d\n",stack_to_push -> head -> num,stack_to_pull->head->num);
 	Delete(stack_to_pull);
+	//printf("add of a %p\n", stack_to_pull->head);
+	// node *tmp = stack_to_push -> head;
+	// if (stack_to_pull -> head == NULL)
+	// {
+	// 	while (tmp)
+	// 	{
+	// 		printf("b num %d\n", tmp->num);
+	// 		tmp = tmp -> next;
+	// 	}
+	// }
+	// printf("add of b %p\n",stack)
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int	find_max_ndx(stack *a)
@@ -287,6 +299,7 @@ int	find_max_ndx(stack *a)
 		loc++;
 		tmp = tmp -> next;
 	}
+	//printf("min = %d ndx = %d\n",min, ndx);
 	return (ndx);
 }
 
@@ -319,27 +332,19 @@ void	go_to_index(stack *a, stack *b, int ndx)
 	pushStack(a, b);
 }
 
-void	sortstack_a(stack *a, stack *b)
+void	sortstack_a(stack *a, stack *b)////problem here///////
 {
 	int	ndx;
 	while (!Empty(a))
 	{
 		ndx = find_max_ndx(a);
 		go_to_index(a, b, ndx);
-		pushStack(a, b);
+		 //pushStack(a, b);
 	}
-	printf("%p\n",b->head);
-	while (!Empty(b))
-	{
-		pushStack(b, a);
-		printf("%d\n",b->head->num);
-	}
-	printf("before while\n");
 	while (b -> head)
 	{
-		printf("hello 4\n");
-		printf("%d\n", b -> head -> num);
-		b -> head = b -> head -> next;
+		printf("%d\n",b->head->num);
+		pushStack(b, a);
 	}
 }
 
@@ -383,13 +388,6 @@ void	Sortpush(int num, stack *top)
 		top -> head = tmp;
 }
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
-}
 
 void	checkDouble(int *pt, int size)
 {
@@ -425,7 +423,15 @@ void	checkDouble(int *pt, int size)
 	free(pt);
 	sortstack_a(&a, &b);
 }
-
+//8/////888/8/8/8/8/8//8/8/8/8/8//8/8/8/8/8//88/8//8/8/8/8/8/8/8/8/8/8/8/
+///8/8/8/8/8/8/8//8/8/8/8/8/8/8//88/
+int	ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
 int	AllSpaces(char c)
 {
 	if ((c == '\t') || (c == '\n') || (c == '\v')
