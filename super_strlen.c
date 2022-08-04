@@ -178,98 +178,16 @@ typedef struct stack
 //   }
 // }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// int	find_max_ndx(stack *a)
-// {
-// 	int		max;
-// 	node	*tmp;
-// 	int		loc;
-// 	int		ndx;
-
-// 	tmp = a -> head;
-// 	max = tmp -> num;
-// 	ndx = 0;
-// 	loc = 0;
-// 	while (tmp)
-// 	{
-// 		if (tmp -> num > max)
-// 		{
-// 			max = tmp -> num;
-// 			ndx = loc;
-// 		}
-// 		loc++;
-// 		tmp = tmp -> next;
-// 	}
-// 	return (ndx);
-// }
-
-// void	go_to_index(stack *a, stack *b, int ndx)
-// {
-// 	node	*tmp;
-// 	int		i;
-// 	int		size;
-
-// 	tmp = a -> head;
-// 	i = 0;
-// 	size = a -> size;
-// 	while (i != ndx || size != ndx)
-// 	{
-// 		if (ndx <= size / 2)
-// 		{
-// 			rotate(a);
-// 			i++;
-// 		}
-// 		else if (ndx > size / 2)
-// 		{
-// 			reverse(a);
-// 			size--;	
-// 		}
-// 	}
-// 	pushStack(a, b);
-// }
-
-// void	sortstack_a(stack *a, stack *b)
-// {
-// 	int	ndx;
-
-// 	while (!Empty(a))
-// 	{
-// 		ndx = find_max_ndx(a);
-// 		go_to_index(a, ndx);
-// 		pushStack(a, b);
-// 	}
-// 	while (!Empty(b))
-// 		pushStack(b, a);
-// }
-
-// int sort(int **ar, int size)
-// {
-//     int 	i;
-//     int 	j;
-//     int 	tmp;
-
-//     i = 0;
-//     j = 0;
-//     while (j < size - 1)
-//     {
-//         while (i < size - j - 1)
-//         {
-//             if (*ar[i] > *ar[i + 1])
-//             {
-//                 tmp = *ar[i];
-//                 *ar[i] = *ar[i + 1];
-//                 *ar[i + 1] = tmp;
-//             }
-//             i++;
-//         }
-//         j++;
-//     }
-// 	return (size / 2);
-// }
+int	Empty(stack *stk)
+{
+	if (stk -> head == NULL)
+		return (1);
+	else
+		return (0);
+}
 void	push(int num, stack *top)
 {
 	node *tmp;
-
 	tmp = malloc(sizeof(node));
 	if (!tmp)
 		exit (1);
@@ -277,6 +195,177 @@ void	push(int num, stack *top)
 	tmp -> next = top -> head;
 	top -> head = tmp;
 	top -> size += 1;
+}
+void	Delete(stack *stk)
+{
+	node	*tmp;
+
+	if (Empty(stk) == 0)
+	{
+		tmp = stk -> head;
+		stk -> head = stk -> head -> next;
+		free(tmp);
+		tmp = NULL;
+	}
+}
+void	rotate(stack *stk)
+{
+	node	*tmp;
+	node	*top;
+
+	if (Empty(stk) || stk -> head ->next == NULL )
+        return;
+	top = stk -> head -> next;	
+	tmp = stk -> head;
+	while (tmp)
+	{
+		if (tmp -> next == NULL)
+		{
+			tmp -> next = stk -> head;
+			break;
+		}
+		tmp = tmp -> next;
+	}
+	stk -> head -> next = NULL;
+	stk -> head = top;
+}
+
+void	reverse(stack *stk)
+{
+	node	*tmp;
+
+	if (Empty(stk) || stk -> head -> next == NULL )
+        return;
+	tmp = stk -> head;
+	while (tmp)
+	{
+		if (tmp -> next == NULL)
+		{
+			tmp -> next = stk -> head;
+			break;
+		}
+		tmp = tmp -> next;
+	}
+	stk -> head = tmp;
+	while (tmp)
+	{
+		if (tmp -> next == stk -> head)
+		{
+			tmp -> next = NULL;
+			break;
+		}
+		tmp = tmp -> next;
+	}
+}
+
+void	pushStack(stack *stack_to_pull, stack *stack_to_push)
+{
+	if (Empty(stack_to_pull))
+		return;
+	push(stack_to_pull -> head -> num, stack_to_push);
+	Delete(stack_to_pull);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int	find_max_ndx(stack *a)
+{
+	int		min;
+	node	*tmp;
+	int		loc;
+	int		ndx;
+
+	tmp = a -> head;
+	min = tmp -> num;
+	ndx = 0;
+	loc = 0;
+	while (tmp)
+	{
+		if (tmp -> num < min)
+		{
+			min = tmp -> num;
+			ndx = loc;
+		}
+		loc++;
+		tmp = tmp -> next;
+	}
+	return (ndx);
+}
+
+void	go_to_index(stack *a, stack *b, int ndx)
+{
+	node	*tmp;
+	int		i;
+	int		size;
+
+	tmp = a -> head;
+	i = 0;
+	size = a -> size;
+	while (1)
+	{
+		if (ndx <= size / 2)
+		{
+			if (i == ndx)
+				break;
+			rotate(a);
+			i++;
+		}
+		else if (ndx > size / 2)
+		{
+			if (size == ndx)
+				break;
+			reverse(a);
+			size--;	
+		}
+	}
+	pushStack(a, b);
+}
+
+void	sortstack_a(stack *a, stack *b)
+{
+	int	ndx;
+	while (!Empty(a))
+	{
+		ndx = find_max_ndx(a);
+		go_to_index(a, b, ndx);
+		pushStack(a, b);
+	}
+	printf("%p\n",b->head);
+	while (!Empty(b))
+	{
+		pushStack(b, a);
+		printf("%d\n",b->head->num);
+	}
+	printf("before while\n");
+	while (b -> head)
+	{
+		printf("hello 4\n");
+		printf("%d\n", b -> head -> num);
+		b -> head = b -> head -> next;
+	}
+}
+
+int sort(int **ar, int size)
+{
+    int 	i;
+    int 	j;
+    int 	tmp;
+
+    i = 0;
+    j = 0;
+    while (j < size - 1)
+    {
+        while (i < size - j - 1)
+        {
+            if (*ar[i] > *ar[i + 1])
+            {
+                tmp = *ar[i];
+                *ar[i] = *ar[i + 1];
+                *ar[i + 1] = tmp;
+            }
+            i++;
+        }
+        j++;
+    }
+	return (size / 2);
 }
 void	Sortpush(int num, stack *top)
 {
@@ -287,6 +376,7 @@ void	Sortpush(int num, stack *top)
 		exit (1);
 	tmp -> num = num;
 	tmp -> next = NULL;
+	top -> size += 1;
 	if (top -> head != NULL )
 		top -> head -> next = tmp;
 	else	
@@ -305,20 +395,18 @@ void	checkDouble(int *pt, int size)
 {
 	int		i;
 	stack	a;
+	stack	b;
 	node 	*top;
 
-	printf("checkdouble hello 1\n");
 	a.head = NULL;
-	printf("checkdouble hello 2\n");
+	b.head = NULL;
 	i = 0;
-	top = a.head;
 	push(pt[0], &a);
+	top = a.head;
 	while (i < size)
 	{
-		printf("inside of while\n");
 		if (pt[i] != a.head -> num)
 		{
-			printf("inside of IF \n");
 			if (a.head -> next == NULL)
 			{
 				Sortpush(pt[i], &a);
@@ -330,12 +418,12 @@ void	checkDouble(int *pt, int size)
 		}
 		else if (pt[i] == a.head -> num)
 		{
-			printf("inside of if\n");
 			i++;
 			a.head = top;
 		}
 	}
 	free(pt);
+	sortstack_a(&a, &b);
 }
 
 int	AllSpaces(char c)
@@ -432,7 +520,5 @@ int main(int argc, char **argv)
 	while (++i < argc)
 		super_atoi(&array,argv[i],size);
 	checkDouble(array, size);
-	i = 0;
-	while (i < size)
-		printf("%d\n",array[i++]);
+	
 }
