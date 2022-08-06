@@ -372,7 +372,7 @@ void	Sortpush(int num, stack *top)
 		top -> head = tmp;
 }
 
-
+void	five(stack *a, stack *b);
 void	checkDouble(int *pt, int size)
 {
 	int		i;
@@ -405,7 +405,8 @@ void	checkDouble(int *pt, int size)
 		}
 	}
 	free(pt);
-	sortstack_a(&a, &b);
+	//sortstack_a(&a, &b);
+	five(&a, &b);
 }
 //8/////888/8/8/8/8/8//8/8/8/8/8//8/8/8/8/8//88/8//8/8/8/8/8/8/8/8/8/8/8/
 ///8/8/8/8/8/8/8//8/8/8/8/8/8/8//88/
@@ -499,8 +500,18 @@ void    super_atoi(int **ar, char *ptr, int count)
     ar[0][k] = ret * sign;
     k++; 
 }
-////THE WORKING ALGO/////
+////THE WORKING ALGO////////////////////////////////////////////////
+void	swap(stack *stk)
+{
+	int var;
 
+	if (Empty(stk) == 1 || stk -> head -> next == NULL)
+		return;
+	var = stk -> head -> num;
+	stk-> head -> num = stk -> head -> next -> num;
+	stk -> head -> next -> num = var;
+}
+//////////////////////////////////////////////////
 void	three(stack *a, stack *b)
 {
 	node *tmp;
@@ -510,26 +521,60 @@ void	three(stack *a, stack *b)
 	ar[0] = tmp -> num;
 	ar[1] = tmp -> next -> num;
 	ar[2] = tmp -> next -> next -> num; 
-	if ((ar[0] > a[1]) && (ar[1] < ar[2]))
+	if ((ar[0] > ar[1]) && (ar[1] < ar[2]) && (ar[0] < ar[2]))
 		swap(a);
-	else if ((ar[0] > ar[1]) && (ar[1] < ar[2]))
+	else if ((ar[0] > ar[1]) && (ar[1] > ar[2]) && (ar[0] > ar[2]))
 	{
 		swap(a);
 		reverse(a);
 	}
-	else if (ar[0] > ar[1] && ar[1] < ar[2])
+	else if ( (ar[0] > ar[1]) && (ar[1] < ar[2]) && (ar[0] > ar[2]))
 		rotate(a);
-	else if (a[0] < ar[1] && ar[1] > ar[2])
+	else if ((ar[0] < ar[1]) && (ar[1] > ar[2]) && (ar[0] < ar[2]))
 	{
 		swap(a);
 		rotate(a);
 	}
-	else if (a[0] < ar[1] && ar[1] > ar[2])
+	else 
 		reverse(a);
+
 }
+/////////////////////////////////////////////////////////////////
+int	iterToLast(stack *x)
+{
+	node	*tmp;
+	int		last;
 
+	tmp = x -> head;
+	while (tmp)
+	{
+		last = tmp -> num;
+		tmp = tmp -> next;
+	}
+	return (last);
+}
+////////////////////////////////////////////////////////////
 
+void	five(stack *a, stack *b)
+{
+	node	*tmp;
+	int		min;
+	int		max;
+	//handle who should proceed between min and max 
+	min = find_max_ndx(a);
+	go_to_index(a, b, min);
+	max = find_min_ndx(a);
+	go_to_index(a, b, max);
+	three(a, b);
+	pushStack(b, a);
+	rotate(a);
+	pushStack(b, a);
+}	
 
+void	hundred(stack *a, stack *b, int size) 
+{
+	
+}
 
 int main(int argc, char **argv)
 {
@@ -540,5 +585,4 @@ int main(int argc, char **argv)
 	while (++i < argc)
 		super_atoi(&array,argv[i],size);
 	checkDouble(array, size);
-	
 }

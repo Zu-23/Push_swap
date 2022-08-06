@@ -1,70 +1,26 @@
 #include<stdio.h>
 #include<stdlib.h>
+typedef struct node
+{
+	int num;
+	struct node *next;
+}node;
+
 typedef struct stack
 {
-    int num;
-    struct stack *next;
+	node *head;
+	int size;
 }stack;
 
-void    push(int num, stack **top)
+
+
+int main()
 {
-    stack *tmp;
-
-    tmp = malloc(sizeof(stack));
-    if (!tmp)
-        exit (1);
-    tmp->num = num;
-    tmp->next = *top;
-    *top = tmp;
-}
-
-void	reverse(stack **stack_a)
-{
-	stack *tmp;
-
-	tmp = *stack_a;
-	while (tmp)
+    int ar[3] = {5,7,2};
+    if ((ar[0] < ar[1]) && (ar[1] > ar[2]) && (ar[0] > ar[2]))
 	{
-		if (tmp->next == NULL)
-		{
-			tmp->next = *stack_a;
-			break;
-		}
-		tmp = tmp->next;
+		printf("-4\n");
 	}
-	*stack_a = tmp;
-	while (tmp)
-	{
-		if (tmp->next == *stack_a)
-		{
-			tmp->next = NULL;
-			break;
-		}
-		tmp = tmp->next;
-	}
+    else
+        printf("ar[0]= %d < ar[1] = %d > ar[2] = %d\n",ar[0], ar[1], ar[2]);
 }
-int main() {
-  stack *stack_a;
-  stack *tmp;
-  stack_a = NULL;
-  
-  push(1,&stack_a);
-  push(2,&stack_a);
-  push(3,&stack_a);
-  tmp = stack_a;
-  while (tmp)
-  {
-      printf("%d\n",tmp->num);
-      tmp = tmp->next;
-  }
-  reverse(&stack_a);
-  tmp = stack_a;
-  printf("------------------\n");
-  while (tmp)
-  {
-      printf("%d\n",tmp->num);
-      tmp = tmp->next;
-  }
-  return 0;
-}
-
