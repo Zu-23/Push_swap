@@ -243,33 +243,57 @@ void	pushStack(stack *stack_to_pull, stack *stack_to_push)
 void	fill_min_ar(int *min_ar, int *ndx_ar, stack *a)
 {
 	min_ar[0] = a -> head -> num;
+	min_ar[1] = min_ar[0];
 	ndx_ar[0] = 0;
 	ndx_ar[1] = 0;
 }
-void	find_two_min_ndx(stack *a, int loc)
+void	find_next_min(stack *a, int *min_ar, int *ndx_ar)
 {
-	int 	min_ar[2];
-	int		ndx_ar[2];
-	int		prv_min;
 	node	*tmp;
+	node	*tmp2;
+	int		loc;
+
+	tmp = a -> head;
+	tmp2 = tmp;
+	loc = 0;
+
+	while (tmp)
+	{
+		while (tmp2)
+		{
+			if (min_ar[1] < tmp2 -> num)
+				min_ar[1] = tmp2 -> num;
+			tmp2 = tmp2 -> next;
+		}
+		if (min_ar[1] > tmp -> num && tmp -> num != min_ar[0])
+		{
+			min_ar[1] = tmp -> num;
+			ndx_ar[1] = loc;
+		}
+		loc++;
+		tmp = tmp -> next;	
+	}
+}
+void	find_two_min_ndx(stack *a, int *min_ar, int *ndx_ar)
+{
+	node	*tmp;
+	int		loc;
 
 	fill_min_ar(min_ar, ndx_ar, a);
 	tmp = a -> head;
+	loc = 0;
 	while (tmp)
 	{
 		if (tmp -> num < min_ar[0])
 		{
-			prv_min = min_ar[0];
-			ndx_ar[1] = ndx_ar[0];
 			min_ar[0] = tmp ->num;
-			ndx_ar[0 ] = loc;
+			ndx_ar[0] = loc;
 		}
 		loc++;
 		tmp = tmp -> next;
 	}
-	min_ar[1] = prv_min;
+	find_next_min(a, min_ar, ndx_ar);
 	printf("(min = %d ndx = %d) (prvmin = %d ndx = %d)\n",min_ar[0],ndx_ar[0],min_ar[1],ndx_ar[1]);
-	
 }
 
 int	find_min_ndx(stack *a)
@@ -324,14 +348,29 @@ void	go_to_index(stack *a, stack *b, int ndx)
 	}
 	pushStack(a, b);
 }
+void	push_two_mind(stack *a, stack *b, int *ndx_ar)
+{
+	node	*tmp;
+	int		size;
+	int		i;
+
+	size = a -> size;
+	i = 0;
+	while (1)
+	{
+		if (ndx_ar[0] < size / 2 &&  )
+	}
+}
 
 void	sortstack_a(stack *a, stack *b)
 {
 	int	ndx;
+	int	ndx_ar[2];
+	int	min_ar[2];
 	while (!Empty(a))
 	{
-		ndx = find_min_ndx(a);
-		go_to_index(a, b, ndx);
+		find_two_min_ndx(a, ndx_ar, min_ar);
+		push_two_min(a, b, ndx_ar);
 	}
 	while (b -> head)
 		pushStack(b, a);
@@ -378,7 +417,7 @@ void	Sortpush(int num, stack *top)
 }
 
 void	five(stack *a, stack *b);
-void	checkDouble(int *pt, int size)
+void	checkDouble(int *pt, int size)///////////MAIN//////////
 {
 	int		i;
 	stack	a;
@@ -411,7 +450,6 @@ void	checkDouble(int *pt, int size)
 	}
 	printf("size %d\n", a.size);
 	free(pt);
-	find_two_min_ndx(&a, 0);
 	//sortstack_a(&a, &b);
 	//five(&a, &b);
 }
@@ -570,7 +608,7 @@ void	five(stack *a, stack *b)
 	//handle who should proceed between min and max 
 	min = find_min_ndx(a);
 	go_to_index(a, b, min);
-	// max = find_min_ndx(a);
+	// max = find_max_ndx(a);
 	go_to_index(a, b, max);
 	three(a, b);
 	pushStack(b, a);
