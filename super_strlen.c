@@ -120,34 +120,7 @@ typedef struct stack
 // 	List_to_array(stack_a, stack_b);
 // }
 
-// int	List_to_array(stack **stack_a, stack **stack_b)
-// {
-// 	int	size;
-// 	stack *head;
-// 	int	*ar;
-// 	int	i;
-
-// 	i = 0;
-// 	head = *stack_a;
-// 	size = 0;
-// 	while (head)
-// 	{
-// 		size++;
-// 		head = head -> next;
-// 	}
-// 	ar = malloc(sizeof(int) * size);
-// 	head = *stack_a;
-// 	while (head)
-// 	{
-// 		ar[i] = head -> num;
-// 		head = head -> next;
-// 		i++;
-// 	}
-// 	i = sort(&ar, size);
-// 	size = ar[size / 2];
-// 	free(ar);
-// 	sortStack(stack_a, stack_b, size, i);
-// }
+// 
 
 // void sort(stack** head)
 // {
@@ -267,7 +240,39 @@ void	pushStack(stack *stack_to_pull, stack *stack_to_push)
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
-int	find_max_ndx(stack *a)
+void	fill_min_ar(int *min_ar, int *ndx_ar, stack *a)
+{
+	min_ar[0] = a -> head -> num;
+	ndx_ar[0] = 0;
+	ndx_ar[1] = 0;
+}
+void	find_two_min_ndx(stack *a, int loc)
+{
+	int 	min_ar[2];
+	int		ndx_ar[2];
+	int		prv_min;
+	node	*tmp;
+
+	fill_min_ar(min_ar, ndx_ar, a);
+	tmp = a -> head;
+	while (tmp)
+	{
+		if (tmp -> num < min_ar[0])
+		{
+			prv_min = min_ar[0];
+			ndx_ar[1] = ndx_ar[0];
+			min_ar[0] = tmp ->num;
+			ndx_ar[0 ] = loc;
+		}
+		loc++;
+		tmp = tmp -> next;
+	}
+	min_ar[1] = prv_min;
+	printf("(min = %d ndx = %d) (prvmin = %d ndx = %d)\n",min_ar[0],ndx_ar[0],min_ar[1],ndx_ar[1]);
+	
+}
+
+int	find_min_ndx(stack *a)
 {
 	int		min;
 	node	*tmp;
@@ -325,7 +330,7 @@ void	sortstack_a(stack *a, stack *b)
 	int	ndx;
 	while (!Empty(a))
 	{
-		ndx = find_max_ndx(a);
+		ndx = find_min_ndx(a);
 		go_to_index(a, b, ndx);
 	}
 	while (b -> head)
@@ -368,7 +373,7 @@ void	Sortpush(int num, stack *top)
 	top -> size += 1;
 	if (top -> head != NULL )
 		top -> head -> next = tmp;
-	else	
+	else
 		top -> head = tmp;
 }
 
@@ -404,9 +409,11 @@ void	checkDouble(int *pt, int size)
 			a.head = top;
 		}
 	}
+	printf("size %d\n", a.size);
 	free(pt);
+	find_two_min_ndx(&a, 0);
 	//sortstack_a(&a, &b);
-	five(&a, &b);
+	//five(&a, &b);
 }
 //8/////888/8/8/8/8/8//8/8/8/8/8//8/8/8/8/8//88/8//8/8/8/8/8/8/8/8/8/8/8/
 ///8/8/8/8/8/8/8//8/8/8/8/8/8/8//88/
@@ -561,9 +568,9 @@ void	five(stack *a, stack *b)
 	int		min;
 	int		max;
 	//handle who should proceed between min and max 
-	min = find_max_ndx(a);
+	min = find_min_ndx(a);
 	go_to_index(a, b, min);
-	max = find_min_ndx(a);
+	// max = find_min_ndx(a);
 	go_to_index(a, b, max);
 	three(a, b);
 	pushStack(b, a);
@@ -571,10 +578,56 @@ void	five(stack *a, stack *b)
 	pushStack(b, a);
 }	
 
-void	hundred(stack *a, stack *b, int size) 
-{
-	
-}
+// void	hundred(stack *a, stack *b) 
+// {
+// 	//first we sort stack element in an array
+// 	//we devide them by 3
+// 	//we take the first chunk (0-33) then we compare it with size/3
+// 	//if less then push
+// 	int	mid;
+
+// 	while(!Empty(a))
+// 	{
+// 		mid = List_to_array(a, b);
+// 		chunk(a, b, mid);
+// 	}
+// }
+// void	chunk(stack *a, stack *b, int mid)
+// {
+// 	int		i;
+// 	int		size;
+// 	node	*tmp;
+
+// 	i = 0;
+// 	size = a -> size;
+// 	tmp = a -> head;
+// 	while (i < size)
+// 	{
+// 		if (tmp -> num < mid)
+// 			pushStack(a, b);
+// 		else
+// 			rotate(a);
+// 		i++;
+// 	}
+// }
+// int	List_to_array(stack *a, stack *b)
+// {
+// 	char	*ar;
+// 	int		i;
+// 	int		size;
+// 	node	*tmp;
+
+// 	tmp = a -> head;
+// 	size = a -> size;
+// 	ar = malloc(sizeof(size));
+// 	while (tmp)
+// 	{
+// 		ar[++i] = tmp -> num;
+// 		tmp = tmp -> next;
+// 	}
+// 	return (ar[size / 3]);
+// }
+
 
 int main(int argc, char **argv)
 {
