@@ -1,3 +1,5 @@
+
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -247,7 +249,7 @@ void	fill_min_ar(int *min_ar, int *ndx_ar, stack *a)
 	ndx_ar[0] = 0;
 	ndx_ar[1] = 0;
 }
-void	find_next_min(stack *a, int *min_ar, int *ndx_ar)
+void	find_second_min(stack *a, int *min_ar, int *ndx_ar)
 {
 	node	*tmp;
 	node	*tmp2;
@@ -274,7 +276,7 @@ void	find_next_min(stack *a, int *min_ar, int *ndx_ar)
 		tmp = tmp -> next;	
 	}
 }
-void	find_two_min_ndx(stack *a, int *min_ar, int *ndx_ar)
+void	find_first_min(stack *a, int *min_ar, int *ndx_ar)
 {
 	node	*tmp;
 	int		loc;
@@ -292,10 +294,106 @@ void	find_two_min_ndx(stack *a, int *min_ar, int *ndx_ar)
 		loc++;
 		tmp = tmp -> next;
 	}
-	find_next_min(a, min_ar, ndx_ar);
-	printf("(min = %d ndx = %d) (prvmin = %d ndx = %d)\n",min_ar[0],ndx_ar[0],min_ar[1],ndx_ar[1]);
+	find_second_min(a, min_ar, ndx_ar);
 }
+void	min_push(stack *a, stack *b, int *ndx_ar)
+{
+	int ndx1;
+	int	ndx2;
 
+	ndx1 = distance_compare(ndx_ar[0]);
+	ndx2 = distance_compare(ndx_ar[1]);
+	if (ndx1 < ndx2)
+	{
+		go_to_index(ndx1);
+		ndx2 = find_min_ndx(a);
+		go_to_index(ndx2);
+	}
+	else
+	{
+		go_to_index(ndx2);
+		ndx1 = find_min_ndx(a);
+		go_to_index(ndx1);
+	}
+}
+int	distance_compare(int ndx)
+{
+	if (ndx <= size / 2)
+		return (ndx);
+	else
+		return (size - ndx);
+}
+void	short_path_three(stack *a, stack *b, int *ndx_ar)
+{
+	int var_ar[3];
+	
+	var_ar[0] = a -> size;
+	if (ndx_ar[0] > var_ar[0] / 2 && ndx_ar[1] <= var_ar[0] / 2)
+	{
+		var_ar[1] = ndx_ar[0];
+		ndx_ar[0] = ndx_ar[1];
+		ndx_ar[1] = var_ar[1];
+	}
+	else if (ndx_ar[0] <= var_ar[0] / 2 && ndx_ar[1] > var_ar[0] / 2 
+			&& var_ar[0] - ndx_ar[0] >= ndx_ar[1] - var_ar[0] / 2)
+		go_to_index(a, b, ndx_ar[0]);
+	var_ar[2] = find_min_ndx(a);
+	go_to_index(a, b, var_ar[2]);
+}
+void	short_path_two(stack *a, stack *b, int *ndx_ar)
+{
+	int	ndx[2];
+	int	i;
+
+	ndx[0] = 0;
+	ndx[1] = 0;
+	i = 0;
+	while (ndx_ar[0] > a -> size / 2 && ndx_ar[1] > a -> size / 2 )
+	{
+		if (ndx[0] == ndx_ar[0])
+		{
+			pushStack(a, b);
+			i++;
+		}
+		else if (ndx[1] == ndx_ar[1])
+		{
+			pushStack(a, b);
+			i++;
+		}
+		else if (i == 2)
+			break;
+		reverse(a);
+		ndx[0]++;
+		ndx[1]++;
+	}
+}
+void	short_path_one(stack *a, stack *b, int *ndx_ar)
+{
+	int	ndx[2];
+	int	i;
+
+	ndx[0] = 0;
+	ndx[1] = 0;
+	i = 0;
+	while (ndx_ar[0] <= a -> size / 2 && ndx_ar[1] <= a -> size / 2 )
+	{
+		if (ndx[0] == ndx_ar[0])
+		{
+			pushStack(a, b);
+			i++;
+		}
+		else if (ndx[1] == ndx_ar[1])
+		{
+			pushStack(a, b);
+			i++;
+		}
+		else if (i == 2)
+			break;
+		rotate(a);
+		ndx[0]++;
+		ndx[1]++;
+	}
+}
 int	find_min_ndx(stack *a)
 {
 	int		min;
@@ -319,6 +417,29 @@ int	find_min_ndx(stack *a)
 	}
 	return (ndx);
 }
+int	find_max_ndx(stack *a)
+{
+	int		max;
+	node	*tmp;
+	int		loc;
+	int		ndx;
+
+	tmp = a -> head;
+	max = tmp -> num;
+	ndx = 0;
+	loc = 0;
+	while (tmp)
+	{
+		if (tmp -> num > max)
+		{
+			max = tmp -> num;
+			ndx = loc;
+		}
+		loc++;
+		tmp = tmp -> next;
+	}
+	return (ndx);
+}
 
 void	go_to_index(stack *a, stack *b, int ndx)
 {
@@ -328,7 +449,7 @@ void	go_to_index(stack *a, stack *b, int ndx)
 
 	tmp = a -> head;
 	i = 0;
-	size = a -> size;
+	size = a -> size - 1;
 	while (1)
 	{
 		if (ndx <= size / 2)
@@ -340,7 +461,7 @@ void	go_to_index(stack *a, stack *b, int ndx)
 		}
 		else if (ndx > size / 2)
 		{
-			if (size == ndx)
+			if (size  == ndx)
 				break;
 			reverse(a);
 			size--;	
@@ -348,33 +469,20 @@ void	go_to_index(stack *a, stack *b, int ndx)
 	}
 	pushStack(a, b);
 }
-void	push_two_mind(stack *a, stack *b, int *ndx_ar)
-{
-	node	*tmp;
-	int		size;
-	int		i;
 
-	size = a -> size;
-	i = 0;
-	while (1)
-	{
-		if (ndx_ar[0] < size / 2 &&  )
-	}
-}
-
-void	sortstack_a(stack *a, stack *b)
-{
-	int	ndx;
-	int	ndx_ar[2];
-	int	min_ar[2];
-	while (!Empty(a))
-	{
-		find_two_min_ndx(a, ndx_ar, min_ar);
-		push_two_min(a, b, ndx_ar);
-	}
-	while (b -> head)
-		pushStack(b, a);
-}
+// void	sortstack_a(stack *a, stack *b)
+// {
+// 	int	ndx;
+// 	int	ndx_ar[2];
+// 	int	min_ar[2];
+// 	while (!Empty(a))
+// 	{
+// 		find_first_min(a, ndx_ar, min_ar);
+// 		push_two_min(a, b, ndx_ar);
+// 	}
+// 	while (b -> head)
+// 		pushStack(b, a);
+// }
 
 int sort(int **ar, int size)
 {
@@ -451,7 +559,7 @@ void	checkDouble(int *pt, int size)///////////MAIN//////////
 	printf("size %d\n", a.size);
 	free(pt);
 	//sortstack_a(&a, &b);
-	//five(&a, &b);
+	five(&a, &b);
 }
 //8/////888/8/8/8/8/8//8/8/8/8/8//8/8/8/8/8//88/8//8/8/8/8/8/8/8/8/8/8/8/
 ///8/8/8/8/8/8/8//8/8/8/8/8/8/8//88/
@@ -608,12 +716,20 @@ void	five(stack *a, stack *b)
 	//handle who should proceed between min and max 
 	min = find_min_ndx(a);
 	go_to_index(a, b, min);
-	// max = find_max_ndx(a);
+	printf(" min in b %d\n",b->head->num);
+	max = find_max_ndx(a);
 	go_to_index(a, b, max);
 	three(a, b);
 	pushStack(b, a);
 	rotate(a);
 	pushStack(b, a);
+
+	tmp = a -> head;
+	while (tmp)
+	{
+		printf("%d\n",tmp->num);
+		tmp = tmp -> next;
+	}
 }	
 
 // void	hundred(stack *a, stack *b) 
