@@ -183,6 +183,16 @@ void	Delete(stack *stk)
 		tmp = NULL;
 	}
 }
+void	swap(stack *stk)
+{
+	int var;
+
+	if (Empty(stk) == 1 || stk -> head -> next == NULL)
+		return;
+	var = stk -> head -> num;
+	stk-> head -> num = stk -> head -> next -> num;
+	stk -> head -> next -> num = var;
+}
 void	rotate(stack *stk)
 {
 	node	*tmp;
@@ -276,10 +286,45 @@ void	find_second_min(stack *a, int *min_ar, int *ndx_ar)
 		tmp = tmp -> next;	
 	}
 }
-void	find_first_min(stack *a, int *min_ar, int *ndx_ar)
+
+int	distance_compare(int ndx, int size)
+{
+	if (ndx <= size / 2)
+		return (ndx);
+	else
+		return (size - ndx);
+}
+
+void go_to_index(stack *a, stack *b, int ndx);
+int find_min_ndx(stack *);
+int	List_to_array(stack *a, int n);
+
+void	min_push(stack *a, stack *b, int *ndx_ar)
+{
+	int ndx1;
+	int	ndx2;
+
+	ndx1 = distance_compare(ndx_ar[0], a -> size);
+	ndx2 = distance_compare(ndx_ar[1], a -> size);
+	if (ndx1 < ndx2)
+	{
+		go_to_index(b, a, ndx1);
+		ndx2 = find_min_ndx(a);
+		go_to_index(b, a, ndx2);
+	}
+	else
+	{
+		go_to_index(b, a, ndx2);
+		ndx1 = find_min_ndx(a);
+		go_to_index(b, a, ndx1);
+	}
+}
+void	find_first_min(stack *a, stack *b)
 {
 	node	*tmp;
 	int		loc;
+	int		ndx_ar[2];
+	int		min_ar[2];
 
 	fill_min_ar(min_ar, ndx_ar, a);
 	tmp = a -> head;
@@ -295,34 +340,14 @@ void	find_first_min(stack *a, int *min_ar, int *ndx_ar)
 		tmp = tmp -> next;
 	}
 	find_second_min(a, min_ar, ndx_ar);
+	min_push(a, b, ndx_ar);
+	tmp = b -> head;
+	if (b -> head -> num < b -> head -> next -> num)
+		swap(b);
 }
-void	min_push(stack *a, stack *b, int *ndx_ar)
-{
-	int ndx1;
-	int	ndx2;
 
-	ndx1 = distance_compare(ndx_ar[0]);
-	ndx2 = distance_compare(ndx_ar[1]);
-	if (ndx1 < ndx2)
-	{
-		go_to_index(ndx1);
-		ndx2 = find_min_ndx(a);
-		go_to_index(ndx2);
-	}
-	else
-	{
-		go_to_index(ndx2);
-		ndx1 = find_min_ndx(a);
-		go_to_index(ndx1);
-	}
-}
-int	distance_compare(int ndx)
-{
-	if (ndx <= size / 2)
-		return (ndx);
-	else
-		return (size - ndx);
-}
+
+
 void	short_path_three(stack *a, stack *b, int *ndx_ar)
 {
 	int var_ar[3];
@@ -394,6 +419,7 @@ void	short_path_one(stack *a, stack *b, int *ndx_ar)
 		ndx[1]++;
 	}
 }
+
 int	find_min_ndx(stack *a)
 {
 	int		min;
@@ -440,6 +466,9 @@ int	find_max_ndx(stack *a)
 	}
 	return (ndx);
 }
+int		iterToLast(stack *x);
+void	five(stack *a, stack *b);
+void	chunk(stack *a, stack *b, int mid);
 
 void	go_to_index(stack *a, stack *b, int ndx)
 {
@@ -449,7 +478,7 @@ void	go_to_index(stack *a, stack *b, int ndx)
 
 	tmp = a -> head;
 	i = 0;
-	size = a -> size - 1;
+	size = iterToLast(a);
 	while (1)
 	{
 		if (ndx <= size / 2)
@@ -484,30 +513,6 @@ void	go_to_index(stack *a, stack *b, int ndx)
 // 		pushStack(b, a);
 // }
 
-int sort(int **ar, int size)
-{
-    int 	i;
-    int 	j;
-    int 	tmp;
-
-    i = 0;
-    j = 0;
-    while (j < size - 1)
-    {
-        while (i < size - j - 1)
-        {
-            if (*ar[i] > *ar[i + 1])
-            {
-                tmp = *ar[i];
-                *ar[i] = *ar[i + 1];
-                *ar[i + 1] = tmp;
-            }
-            i++;
-        }
-        j++;
-    }
-	return (size / 2);
-}
 void	Sortpush(int num, stack *top)
 {
 	node *tmp;
@@ -523,8 +528,8 @@ void	Sortpush(int num, stack *top)
 	else
 		top -> head = tmp;
 }
-
-void	five(stack *a, stack *b);
+void	hundred(stack *a, stack *b, int n);
+int		iterToLast(stack *x);
 void	checkDouble(int *pt, int size)///////////MAIN//////////
 {
 	int		i;
@@ -556,13 +561,21 @@ void	checkDouble(int *pt, int size)///////////MAIN//////////
 			a.head = top;
 		}
 	}
-	printf("size %d\n", a.size);
 	free(pt);
-	//sortstack_a(&a, &b);
-	five(&a, &b);
+	while (a.head)
+		find_first_min(&a,&b);
+	
+	node *tmp;
+	tmp = b.head;
+	while (tmp)
+	{
+		printf("%d\n",tmp -> num);
+		tmp = tmp -> next;
+	}
+	// size = iterToLast(&a);
+	// //printf("size %d\n",a.size);
+	// hundred(&a,&b, size / 7);
 }
-//8/////888/8/8/8/8/8//8/8/8/8/8//8/8/8/8/8//88/8//8/8/8/8/8/8/8/8/8/8/8/
-///8/8/8/8/8/8/8//8/8/8/8/8/8/8//88/
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
@@ -577,8 +590,6 @@ int	AllSpaces(char c)
 		return (0);
 	return (1);
 }
-
-
 int	super_strlen(char **str, int argc)
 {
 	int	i;
@@ -654,16 +665,6 @@ void    super_atoi(int **ar, char *ptr, int count)
     k++; 
 }
 ////THE WORKING ALGO////////////////////////////////////////////////
-void	swap(stack *stk)
-{
-	int var;
-
-	if (Empty(stk) == 1 || stk -> head -> next == NULL)
-		return;
-	var = stk -> head -> num;
-	stk-> head -> num = stk -> head -> next -> num;
-	stk -> head -> next -> num = var;
-}
 //////////////////////////////////////////////////
 void	three(stack *a, stack *b)
 {
@@ -688,103 +689,162 @@ void	three(stack *a, stack *b)
 		swap(a);
 		rotate(a);
 	}
-	else 
+	else if (ar[0] < ar[1] && ar[1] > ar[2] && ar[0] > ar[2]) 
 		reverse(a);
-
 }
-/////////////////////////////////////////////////////////////////
+
 int	iterToLast(stack *x)
 {
 	node	*tmp;
 	int		last;
+	int		i;
 
 	tmp = x -> head;
+	i = 0;
 	while (tmp)
 	{
 		last = tmp -> num;
 		tmp = tmp -> next;
+		i++;
 	}
-	return (last);
+	return (i);
 }
-////////////////////////////////////////////////////////////
+
 
 void	five(stack *a, stack *b)
 {
 	node	*tmp;
 	int		min;
 	int		max;
-	//handle who should proceed between min and max 
+
 	min = find_min_ndx(a);
 	go_to_index(a, b, min);
-	printf(" min in b %d\n",b->head->num);
 	max = find_max_ndx(a);
 	go_to_index(a, b, max);
 	three(a, b);
 	pushStack(b, a);
 	rotate(a);
 	pushStack(b, a);
-
-	tmp = a -> head;
-	while (tmp)
-	{
-		printf("%d\n",tmp->num);
-		tmp = tmp -> next;
-	}
 }	
 
-// void	hundred(stack *a, stack *b) 
-// {
-// 	//first we sort stack element in an array
-// 	//we devide them by 3
-// 	//we take the first chunk (0-33) then we compare it with size/3
-// 	//if less then push
-// 	int	mid;
+void	hundred(stack *a, stack *b, int n) 
+{
+	int	mid;
+	node *tmp;
 
-// 	while(!Empty(a))
-// 	{
-// 		mid = List_to_array(a, b);
-// 		chunk(a, b, mid);
-// 	}
-// }
-// void	chunk(stack *a, stack *b, int mid)
-// {
-// 	int		i;
-// 	int		size;
-// 	node	*tmp;
+	tmp = b -> head;
+	while(a -> head)
+	{ 
+		mid = List_to_array(a, n);
+		chunk(a, b, mid);
+	}
+	while (tmp)
+	{
+		find_first_min(a, b);
+		if (tmp -> num > tmp -> next -> num)
+			swap(b);
+	}
+	// node *tmp = a -> head;
+	// while (tmp)
+	// {
+	// 	printf("%d\n",tmp -> num);
+	// 	tmp = tmp -> next;
+	// }
+}
+void	chunk(stack *a, stack *b, int mid)
+{
+	int		i;
+	int		size;
+	node	*tmp;
 
-// 	i = 0;
-// 	size = a -> size;
-// 	tmp = a -> head;
-// 	while (i < size)
-// 	{
-// 		if (tmp -> num < mid)
-// 			pushStack(a, b);
-// 		else
-// 			rotate(a);
-// 		i++;
-// 	}
-// }
-// int	List_to_array(stack *a, stack *b)
-// {
-// 	char	*ar;
-// 	int		i;
-// 	int		size;
-// 	node	*tmp;
+	i = 0;
+	size = iterToLast(a);
+	tmp = a -> head;
+	while (i < size)
+	{
+		if (tmp -> num <= mid)
+			pushStack(a, b);
+		else if (i != size - 1)
+			rotate(a);
+		i++;
+	}
+	// tmp = b -> head;
+	// while (tmp)
+	// {
+	// 	printf("chunk b %d\n",tmp -> num);
+	// 	tmp = tmp -> next;
+	// }
+}
+void arraySort(int *arr, int size)
+{
+    int	i;
+	int	j;
+	int	tmp;
 
-// 	tmp = a -> head;
-// 	size = a -> size;
-// 	ar = malloc(sizeof(size));
-// 	while (tmp)
-// 	{
-// 		ar[++i] = tmp -> num;
-// 		tmp = tmp -> next;
-// 	}
-// 	return (ar[size / 3]);
-// }
+	i = 0;
+    while (i < size - 1)
+    {
+		j = 0;
+        while (j < size - i - 1)
+        {
+            if (arr[j] > arr[j + 1])
+            {
+                tmp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = tmp;
+            }
+            j++;
+        }
+        i++;
+    }
+}
+
+int	lta_val_i(int size, int n)
+{
+	int	i;
+
+	i = 0;
+	while (1)
+	{
+		if (i == size - 1)
+			break;
+		else if (i == n - 1)
+			break;
+		i++;
+	}
+	return (i);
+}
+
+int	List_to_array(stack *a, int n)
+{
+	int		*ar;
+	int		i;
+	int		size;
+	node	*tmp;
+
+	tmp = a -> head;
+	size = iterToLast(a);
+	ar = malloc(sizeof(int) * size);
+	i = 0;
+	while (tmp)
+	{
+		ar[++i] = tmp -> num;
+		tmp = tmp -> next;
+	}
+	arraySort(ar, size);
+	//n will be sent from calling func and it will have value of size / x
+	//while x is the value which we divide the stack
+	i = lta_val_i(size, n);
+	i = ar[i];
+	free(ar);
+	return (i);
+}
 
 
 int main(int argc, char **argv)
 {
+	stack	a;
+	stack	b;
 	int *array = NULL;
 	int size = super_strlen(argv,argc);
 	int i = 0;
