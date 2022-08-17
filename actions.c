@@ -14,7 +14,7 @@ typedef struct node
 	struct node *next;
 }node;
 
-typedef struct stack
+typedef struct stk
 {
 	node *head;
 	int size;
@@ -76,7 +76,7 @@ void	swap(stack *stk)
 	if (Empty(stk) == 1 || stk -> head -> next == NULL)
 		return;
 	var = stk -> head -> num;
-	stk-> head -> num = stk- head -> next -> num;
+	stk-> head -> num = stk -> head -> next -> num;
 	stk -> head -> next -> num = var;
 }
 
@@ -122,7 +122,7 @@ void	rr(stack *a, stack *b)
 	rotate(a);
 }
 
-void	reverse(stack stk)
+void	reverse(stack *stk)
 {
 	node	*tmp;
 
