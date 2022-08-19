@@ -14,7 +14,6 @@ actions/ss.c \
 actions/swap.c \
 func/super_atoi.c \
 func/super_strlen.c \
-func/AllSpaces.c \
 func/ft_isdigit.c \
 func/Sortpush.c \
 func/sort.c \

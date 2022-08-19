@@ -31,21 +31,6 @@ void	push(int num, stack *top)
 	tmp -> num = num;
 	tmp -> next = top -> head;
 	top -> head = tmp;
-	top -> size += 1;
-}
-
-int	iterToLast(stack *x)
-{
-	node	*tmp;
-	int		last;
-
-	tmp = x -> head;
-	while (tmp)
-	{
-		last = tmp -> num;
-		tmp = tmp -> next;
-	}
-	return (last);
 }
 
 int	Empty(stack *stk)
