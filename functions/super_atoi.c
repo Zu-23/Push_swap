@@ -26,7 +26,7 @@ void     after_int(char c, var *var, int *i)
     }
 }
 
-void    super_atoi(int **ar, char *ptr, int count)
+void    super_atoi(long **ar, char *ptr, int count)
 {
     int				i;
     static int		k;
@@ -37,7 +37,7 @@ void    super_atoi(int **ar, char *ptr, int count)
 	var.sign = 1;
     i = 0;
     if (!*ar)
-        *ar = malloc(sizeof(int) * count);
+        *ar = malloc(sizeof(long) * count);
     while(ptr[i])
     {
         after_int(ptr[i], &var, &i);

@@ -1,7 +1,7 @@
 #include "../actions.h"
 #include "../functions.h"
 
-void	checkDouble(int *pt, int size, stack *a)
+void	checkDouble(long *pt, int size, stack *a)
 {
 	int		i;
 	node 	*top;
@@ -24,6 +24,11 @@ void	checkDouble(int *pt, int size, stack *a)
 		}
 		else if (pt[i] == a -> head -> num)
 		{
+			if (i != 0)
+			{
+				printf("Error\n");
+				exit(1);
+			}
 			i++;
 			a -> head = top;
 		}

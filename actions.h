@@ -1,11 +1,11 @@
 #ifndef ACTIONS_H
 # define ACTIONS_H
 
-
+////change int to long for INT MAX/MIN
 typedef struct node
 {
-	int			num;
-	struct node	*next;
+	int				num;
+	struct node		*next;
 }node;
 
 typedef struct stack
