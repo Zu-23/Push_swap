@@ -33,7 +33,7 @@ int	super_strlen(char **str, int argc)
 		}
 		if (str[i][k] != '\0')
 		{
-			write(2, "Error\n", 6);
+			printf("Error\n");
 			exit(1);
 		}
 		k = 0;

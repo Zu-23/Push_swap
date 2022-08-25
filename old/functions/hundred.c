@@ -21,6 +21,7 @@ void	chunk(stack *a, stack *b, int pivot)
 void	hundred(stack *a, stack *b, int n) 
 {
 	int		pivot;
+	node 	*tmp;
 
 	while (a -> head)
 	{ 
@@ -29,4 +30,10 @@ void	hundred(stack *a, stack *b, int n)
 	}
 	while (b -> head)
 		find_first_min(a, b);
+	tmp = a -> head;
+	while (tmp)
+	{
+		printf("%d\n",tmp -> num);
+		tmp = tmp -> next;
+	}
 }

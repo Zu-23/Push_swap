@@ -26,7 +26,7 @@ void	checkDouble(long *pt, int size, stack *a)
 		{
 			if (i != 0)
 			{
-				write(2, "Error\n", 6);
+				printf("Error\n");
 				exit(1);
 			}
 			i++;

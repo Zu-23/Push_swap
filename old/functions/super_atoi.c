@@ -41,11 +41,11 @@ void    super_atoi(long **ar, char *ptr, int count)
     while(ptr[i])
     {
         after_int(ptr[i], &var, &i);
-        while (ptr[i] >= '0' && ptr[i] <= '9')
+        while (ptr[i] >= '0' && ptr[i] <= '9')//we changed i incr in ptr[i] it might cause prob
             var.ret = var.ret * 10 + (ptr[i++] - 48);
-        if (ptr[i] && AllSpaces(ptr[i++]) == 0)
+        if (ptr[i] && AllSpaces(ptr[i++]) == 0)//another doubt of prob ptr[i++]
         {
-            ar[0][k++] = var.ret * var.sign;
+            ar[0][k++] = var.ret * var.sign; //potential prob k++
             var.sign = 1;
             var.ret = 0;
         }

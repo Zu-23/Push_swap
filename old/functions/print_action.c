@@ -35,7 +35,7 @@ void	print_action_aux(char *str, char c, stack *x, stack *y)
 
 void	print_action(char *str, stack *x, stack *y)
 {
-	ft_printf("%s\n",str);
+	printf("%s\n",str);
 	if (ft_strcmp(str, "sa") == 0 || ft_strcmp(str, "sb") == 0)
 		swap(x);
 	else if (ft_strcmp(str, "ss") == 0)

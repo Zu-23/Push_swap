@@ -25,5 +25,5 @@ void	go_to_index(stack *a, stack *b, int ndx, char c)
 			size--;	
 		}
 	}
-	print_action_aux("p", c, a, b);
+	print_action_aux("p", c, a, b);//need to be changed
 }

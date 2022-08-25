@@ -25,34 +25,30 @@ functions/Empty.c \
 functions/Delete.c \
 functions/checkDouble.c \
 
-NAME=ObjectPushSwap.a
-COMPILE=Push_swap
-BONUS=checker
+NAME=push_swap.a
+HEADER_ACTION=actions.h
+HEADER_FUNC=functions.h
+FLAGS=-Wall -Werror -Wextra
 CC=gcc -Wall -Werror -Wextra
 AR= ar rcs
 OBJ=$(SRC:.c=.o)
 RM=rm -f
 
-all: $(NAME) $(COMPILE)
+all: $(NAME)
+
+# $(NAME): $(OBJ) $(HEADER_ACTION) $(HEADER_FUNC)
+# 	$(CC) $(FLAGS) $(SRC) -o $(NAME)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
-
 %.o: %.c 
 	$(CC) -c $< -o $@
-
-$(COMPILE): $(NAME)
-	cd ft_printf && make
-	$(CC) main.c $(NAME) ft_printf/libftprintf.a -o $(COMPILE)
-
-$(BONUS): $(NAME)
-	$(CC) checker.c ft_printf/libftprintf.a get_next_line/get_next_line.c -o $(BONUS)
 
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME) $(COMPILE)
+	$(RM) $(NAME)
 
 re: fclean all
 
