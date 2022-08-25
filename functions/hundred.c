@@ -29,4 +29,12 @@ void	hundred(stack *a, stack *b, int n)
 	}
 	while (b -> head)
 		find_first_min(a, b);
+
+	node *tmp;
+	tmp = a -> head;
+	while (tmp)
+	{
+		ft_printf("%d\n",tmp -> num);
+		tmp = tmp -> next;
+	}
 }

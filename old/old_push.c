@@ -154,11 +154,11 @@ void	find_second_min(stack *b, int *min_ar, int *ndx_ar)
 	{
 		while (tmp2)
 		{
-			if (min_ar[1] < tmp2 -> num)
+			if (min_ar[1] > tmp2 -> num)//from < to >
 				min_ar[1] = tmp2 -> num;
 			tmp2 = tmp2 -> next;
 		}
-		if (min_ar[1] > tmp -> num && tmp -> num != min_ar[0])
+		if (min_ar[1] < tmp -> num && tmp -> num != min_ar[0])//from > to <
 		{
 			min_ar[1] = tmp -> num;
 			ndx_ar[1] = loc;
@@ -178,7 +178,7 @@ int	distance_compare(int ndx, int size)
 	else
 		return (size - ndx);
 }
-
+int	find_max_ndx(stack *a);
 ///fix the problem of pritning actions
 void	min_push(stack *a, stack *b, int *ndx_ar)
 {
@@ -192,13 +192,13 @@ void	min_push(stack *a, stack *b, int *ndx_ar)
 	if (ndx1 < ndx2)
 	{
 		go_to_index(b, a, ndx_ar[0], 'b');
-		ndx_ar[1] = find_min_ndx(b);
+		ndx_ar[1] = find_max_ndx(b);//min to max
 		go_to_index(b, a, ndx_ar[1], 'b');
 	}
 	else
 	{
 		go_to_index(b, a, ndx_ar[1], 'b');
-		ndx_ar[0]= find_min_ndx(b);
+		ndx_ar[0]= find_max_ndx(b);//min to max
 		go_to_index(b, a, ndx_ar[0], 'b');
 	}
 }
@@ -215,7 +215,7 @@ void	find_first_min(stack *a, stack *b)
 	loc = 0;
 	while (tmp)
 	{
-		if (tmp -> num < min_ar[0])
+		if (tmp -> num > min_ar[0])
 		{
 			min_ar[0] = tmp ->num;
 			ndx_ar[0] = loc;
@@ -225,7 +225,7 @@ void	find_first_min(stack *a, stack *b)
 	}
 	find_second_min(b, min_ar, ndx_ar);
 	min_push(a, b, ndx_ar);
-	if (a -> head -> num < a -> head -> next -> num)
+	if (a -> head -> num > a -> head -> next -> num)
 		swap(a);
 
 }
@@ -673,21 +673,36 @@ void	print_action_aux(char *str, char c, stack *x, stack *y)
 }
 void	print_action(char *str, stack *x, stack *y)
 {
+	static int i;
+
 	printf("%s\n",str);
 	if (str == "sa" || str == "sb")
+	{
 		swap(x);
+		i++;
+	}
 	// else if (str == "ss")
 	// 	ss(x, y);
 	else if (str == "ra" || str == "rb")
+	{
 		rotate(x);
+		i++;
+	}
 	// else if (str == "rr")
 	// 	rr(x, y);
 	else if (str == "rra" || str == "rrb")
+	{
 		reverse(x);
+		i++;
+	}
 	// else if (str == "rrr")
 	// 	rrr(x, y);
 	else if (str = "pa", str = "pb")
+		{
 		pushStack(x, y);
+			i++;
+		}
+	printf("total actions %d\n",i);
 }
 //dont forget treating MAX INT as arg
 void	push_swap(stack *a, stack *b)

@@ -3,20 +3,21 @@
 
 int	find_max_ndx(stack *a)
 {
-	int		min;
+	int		max;
 	node	*tmp;
 	int		loc;
 	int		ndx;
 
 	tmp = a -> head;
-	min = tmp -> num;
+	if (tmp)
+		max = tmp -> num;
 	ndx = 0;
 	loc = 0;
 	while (tmp)
 	{
-		if (tmp -> num < min)
+		if (tmp -> num > max)
 		{
-			min = tmp -> num;
+			max = tmp -> num;
 			ndx = loc;
 		}
 		loc++;
