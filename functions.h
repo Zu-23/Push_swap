@@ -7,9 +7,9 @@
 #include "actions.h"
 typedef struct super_atoi_var
 {
-   int	j;
-   long	ret;
-   int	sign;
+	int	j;
+	long	ret;
+	int	sign;
 }var;
 
 void	checkDouble(long *pt, int size, stack *a);
@@ -42,7 +42,7 @@ int		lta_val_i(int size, int n);
 void	arraySort(int *arr, int size);
 
 /*		print action	*/
-void	print_action(char *str, stack *x, stack *y);
+void	print_action(char *str, stack *x, stack *y, int chk);
 int		ft_strcmp(char *s1, char *s2);
 void	print_action_aux(char *str, char c, stack *x, stack *y);
 

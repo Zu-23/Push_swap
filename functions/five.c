@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:58:46 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/25 15:58:47 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/26 19:07:05 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	five(stack *a, stack *b)
 		min = find_min_ndx(a);
 		go_to_index(a, b, min, 'a');
 		three(a);
-		print_action("pa", b, a);
+		print_action("pa\n", b, a, 0);
 	}
 	else
 	{
@@ -32,8 +32,8 @@ void	five(stack *a, stack *b)
 	max = find_max_ndx(a);
 	go_to_index(a, b, max, 'a');
 	three(a);
-	print_action("pa", b, a);
-	print_action("ra", a, NULL);
-	print_action("pa", b, a);
+	print_action("pa\n", b, a, 0);
+	print_action("ra\n", a, NULL, 0);
+	print_action("pa\n", b, a, 0);
 	}
 }	

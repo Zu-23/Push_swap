@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 01:15:20 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/26 02:00:14 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:30:58 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	stack_status(stack *a)
 	node	*tmp;
 
 	tmp = a -> head;
-	while (tmp)
+	while (tmp->next)
 	{
-		if (tmp -> num  > tmp -> next -> num)
+		if (tmp->num  > tmp->next->num)
 		{
 			ft_printf("KO\n");
 			exit(1);
 		}
-		tmp = tmp -> next;
+		tmp = tmp->next;
 	}
 	ft_printf("OK\n");
 }
@@ -41,25 +41,31 @@ void	check_which_stack(char *str, stack *a, stack *b)
 	{
 		if (str[i] == 'a')
 		{
-			print_action(str, a, b);
+			if (str[i - 1] == 'p')
+				print_action(str, b, a, 1);
+			else
+				print_action(str, a, b, 1);
 			hint = 1;
 		}
 		else if (str[i] == 'b')
 		{
-			print_action(str, b, a);
+			if (str[i - 1] == 'p')
+				print_action(str, a, b, 1);
+			else
+				print_action(str, b, a, 1);
 			hint = 1;
 		}
 		i++;
 	}
 	if (hint == 0)
-		print_action(str, a, b);
+		print_action(str, a, b, 1);
 }
 void	check_str(char *str)
 {
-	if (!ft_strcmp(str, "ra") || !ft_strcmp(str, "rb") ||
-	!ft_strcmp(str, "rr") || !ft_strcmp(str, "sa") || !ft_strcmp(str, "sb")
-	|| !ft_strcmp(str, "ss") || !ft_strcmp(str, "rra") || !ft_strcmp(str, "rrb")
-	|| !ft_strcmp(str, "rrr") || !ft_strcmp(str, "pa") || !ft_strcmp(str, "pb"))
+	if (ft_strcmp(str, "ra\n") && ft_strcmp(str, "rb\n") &&
+	ft_strcmp(str, "rr\n") && ft_strcmp(str, "sa\n") && ft_strcmp(str, "sb\n")
+	&& ft_strcmp(str, "ss\n") && ft_strcmp(str, "rra\n") && ft_strcmp(str, "rrb\n")
+	&& ft_strcmp(str, "rrr\n") && ft_strcmp(str, "pa\n") && ft_strcmp(str, "pb\n"))
 	{
 		write(2, "Error\n", 6);
 		exit(1);
@@ -70,12 +76,12 @@ void    checker(stack *a, stack *b)
 	char    *str; 
 
 	str = get_next_line(0);
-	check_str(str);
 	while (str)
 	{
-		check_which_stack(str, a, b);
-		str = get_next_line(0);
 		check_str(str);
+		check_which_stack(str, a, b);
+		free(str);
+		str = get_next_line(0);
 	}
 	stack_status(a);
 }

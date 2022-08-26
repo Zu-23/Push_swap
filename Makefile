@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/08/26 16:28:08 by zhaddoum          #+#    #+#              #
+#    Updated: 2022/08/26 18:43:40 by zhaddoum         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 
 
 SRC= actions/rrr.c \
@@ -29,13 +41,13 @@ get_next_line/get_next_line.c \
 
 NAME=ObjectPushSwap.a
 COMPILE=Push_swap
-BONUS=checker
+BONUS=bonus
 CC=gcc -Wall -Werror -Wextra
 AR= ar rcs
 OBJ=$(SRC:.c=.o)
 RM=rm -f
 
-all: $(NAME) $(COMPILE)
+all: $(NAME) $(COMPILE) $(BONUS)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
@@ -47,14 +59,14 @@ $(COMPILE): $(NAME)
 	cd ft_printf && make
 	$(CC) main.c $(NAME) ft_printf/libftprintf.a -o $(COMPILE)
 
-$(BONUS): $(NAME)
-	$(CC) checker.c $(NAME) ft_printf/libftprintf.a get_next_line/get_next_line.o -o $(BONUS)
+$(BONUS): $(NAME) 
+	$(CC) checker.c $(NAME) ft_printf/libftprintf.a -o checker
 
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME) $(COMPILE) $(BONUS)
+	$(RM) $(NAME) $(COMPILE) checker
 
 re: fclean all
 
