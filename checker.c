@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/26 01:15:20 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/26 02:00:14 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "actions.h"
 #include "functions.h"
 #include "get_next_line/get_next_line.h"
@@ -44,19 +56,18 @@ void	check_which_stack(char *str, stack *a, stack *b)
 }
 void	check_str(char *str)
 {
-	if (!ft_strcmp(str, "ra") && !ft_strcmp(str, "rb") &&
-	!ft_strcmp(str, "rr") && !ft_strcmp(str, "sa") && !ft_strcmp(str, "sb")
-	&& !ft_strcmp(str, "ss") && !ft_strcmp(str, "rra") && !ft_strcmp(str, "rrb")
-	&& !ft_strcmp(str, "rrr") && !ft_strcmp(str, "pa") && !ft_strcmp(str, "pb"))
+	if (!ft_strcmp(str, "ra") || !ft_strcmp(str, "rb") ||
+	!ft_strcmp(str, "rr") || !ft_strcmp(str, "sa") || !ft_strcmp(str, "sb")
+	|| !ft_strcmp(str, "ss") || !ft_strcmp(str, "rra") || !ft_strcmp(str, "rrb")
+	|| !ft_strcmp(str, "rrr") || !ft_strcmp(str, "pa") || !ft_strcmp(str, "pb"))
 	{
 		write(2, "Error\n", 6);
 		exit(1);
-	}
-
+	} 
 }
 void    checker(stack *a, stack *b)
 {
-	char    *str;
+	char    *str; 
 
 	str = get_next_line(0);
 	check_str(str);

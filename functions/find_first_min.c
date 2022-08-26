@@ -30,11 +30,11 @@ void	find_second_min(stack *b, int *min_ar, int *ndx_ar)
 	{
 		while (tmp2)
 		{
-			if (min_ar[1] > tmp2 -> num)
+			if (min_ar[1] > tmp2 -> num)//from min < num to min > num
 				min_ar[1] = tmp2 -> num;
 			tmp2 = tmp2 -> next;
 		}
-		if (min_ar[1] < tmp -> num && tmp -> num != min_ar[0])
+		if (min_ar[1] < tmp -> num && tmp -> num != min_ar[0])//org min > tmp
 		{
 			min_ar[1] = tmp -> num;
 			ndx_ar[1] = loc;

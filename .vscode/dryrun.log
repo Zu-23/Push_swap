@@ -1,0 +1,31 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/zhaddoum/Desktop/git_ps'
+gcc -Wall -Werror -Wextra -c actions/rrr.c -o actions/rrr.o
+gcc -Wall -Werror -Wextra -c actions/reverse.c -o actions/reverse.o
+gcc -Wall -Werror -Wextra -c actions/rotate.c -o actions/rotate.o
+gcc -Wall -Werror -Wextra -c actions/rr.c -o actions/rr.o
+gcc -Wall -Werror -Wextra -c actions/pushStack.c -o actions/pushStack.o
+gcc -Wall -Werror -Wextra -c actions/ss.c -o actions/ss.o
+gcc -Wall -Werror -Wextra -c actions/swap.c -o actions/swap.o
+gcc -Wall -Werror -Wextra -c functions/super_atoi.c -o functions/super_atoi.o
+gcc -Wall -Werror -Wextra -c functions/super_strlen.c -o functions/super_strlen.o
+gcc -Wall -Werror -Wextra -c functions/stackSize.c -o functions/stackSize.o
+gcc -Wall -Werror -Wextra -c functions/Sortpush.c -o functions/Sortpush.o
+gcc -Wall -Werror -Wextra -c functions/List_to_array.c -o functions/List_to_array.o
+gcc -Wall -Werror -Wextra -c functions/go_to_ndx.c -o functions/go_to_ndx.o
+gcc -Wall -Werror -Wextra -c functions/find_max_ndx.c -o functions/find_max_ndx.o
+gcc -Wall -Werror -Wextra -c functions/find_min_ndx.c -o functions/find_min_ndx.o
+gcc -Wall -Werror -Wextra -c functions/find_first_min.c -o functions/find_first_min.o
+gcc -Wall -Werror -Wextra -c functions/five.c -o functions/five.o
+gcc -Wall -Werror -Wextra -c functions/hundred.c -o functions/hundred.o
+gcc -Wall -Werror -Wextra -c functions/three.c -o functions/three.o
+gcc -Wall -Werror -Wextra -c functions/print_action.c -o functions/print_action.o
+gcc -Wall -Werror -Wextra -c functions/push.c -o functions/push.o
+gcc -Wall -Werror -Wextra -c functions/Empty.c -o functions/Empty.o
+gcc -Wall -Werror -Wextra -c functions/Delete.c -o functions/Delete.o
+gcc -Wall -Werror -Wextra -c functions/checkDouble.c -o functions/checkDouble.o
+ar rcs ObjectPushSwap.a actions/rrr.o actions/reverse.o actions/rotate.o actions/rr.o actions/pushStack.o actions/ss.o actions/swap.o functions/super_atoi.o functions/super_strlen.o functions/stackSize.o functions/Sortpush.o functions/List_to_array.o functions/go_to_ndx.o functions/find_max_ndx.o functions/find_min_ndx.o functions/find_first_min.o functions/five.o functions/hundred.o functions/three.o functions/print_action.o functions/push.o functions/Empty.o functions/Delete.o functions/checkDouble.o
+cd ft_printf && make
+gcc -Wall -Werror -Wextra main.c ObjectPushSwap.a ft_printf/libftprintf.a -o Push_swap
+make: Leaving directory `/Users/zhaddoum/Desktop/git_ps'
+ 

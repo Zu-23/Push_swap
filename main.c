@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/26 01:15:26 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/26 01:27:12 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "actions.h"
 #include "functions.h"
 
@@ -11,28 +23,14 @@ void	push_swap(stack *a, stack *b)
 				swap(a);
 	if (size == 3)
 		three(a);
-	else if (size == 5)
+	else if (size > 3 && size <= 5)
 		five(a, b);
 	else if (size > 5 && size < 500)
 		hundred(a, b, size / 7);
 	else if (size >= 500)
 		hundred(a, b, size / 16);
 }
-void	max_min_int(long *ar, int size)
-{
-	int	i;
 
-	i = 0;
-	while (i < size)
-	{
-		if (ar[i] > 2147483647 || ar[i] < -2147483648)
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
-		i++;
-	}
-}
 int main(int argc, char **argv)
 {
 	stack	a;

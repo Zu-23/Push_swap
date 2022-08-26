@@ -22,7 +22,6 @@ int		Empty(stack *stk);
 void	Delete(stack *stk);
 void	three(stack *a);
 void	five(stack *a, stack *b);
-void	print_action_aux(char *str, char c, stack *x, stack *y);
 int		stackSize(stack *x);
 void	max_min_int(long *ar, int size);
 

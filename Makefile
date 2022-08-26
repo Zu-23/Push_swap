@@ -24,6 +24,8 @@ functions/push.c \
 functions/Empty.c \
 functions/Delete.c \
 functions/checkDouble.c \
+functions/max_min_int.c \
+get_next_line/get_next_line.c \
 
 NAME=ObjectPushSwap.a
 COMPILE=Push_swap
@@ -46,13 +48,13 @@ $(COMPILE): $(NAME)
 	$(CC) main.c $(NAME) ft_printf/libftprintf.a -o $(COMPILE)
 
 $(BONUS): $(NAME)
-	$(CC) checker.c ft_printf/libftprintf.a get_next_line/get_next_line.c -o $(BONUS)
+	$(CC) checker.c $(NAME) ft_printf/libftprintf.a get_next_line/get_next_line.o -o $(BONUS)
 
 clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME) $(COMPILE)
+	$(RM) $(NAME) $(COMPILE) $(BONUS)
 
 re: fclean all
 

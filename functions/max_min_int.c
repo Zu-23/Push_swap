@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   go_to_ndx.c                                        :+:      :+:    :+:   */
+/*   max_min_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/25 15:58:42 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/25 15:58:43 by zhaddoum         ###   ########.fr       */
+/*   Created: 2022/08/26 01:20:32 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/26 01:21:20 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../actions.h"
 #include "../functions.h"
 
-void	go_to_index(stack *a, stack *b, int ndx, char c)
+void	max_min_int(long *ar, int size)
 {
-	int		i;
-	int		size;
+	int	i;
 
 	i = 0;
-	size = stackSize(a);
-	while (1)
+	while (i < size)
 	{
-		if (ndx <= size / 2)
+		if (ar[i] > 2147483647 || ar[i] < -2147483648)
 		{
-			if (i == ndx)
-				break;
-			print_action_aux("r", c, a, b);
-			i++;
+			write(2, "Error\n", 6);
+			exit(1);
 		}
-		else if (ndx > size / 2)
-		{
-			if (size  == ndx)
-				break;
-			print_action_aux("rr", c, a, b);
-			size--;	
-		}
+		i++;
 	}
-	if (c == 'a')
-		print_action_aux("p", 'b', a, b);
-	else if (c == 'b')
-		print_action_aux("p", 'a', a, b);
 }

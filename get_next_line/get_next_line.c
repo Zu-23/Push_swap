@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zhaddoum <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 15:07:57 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/04/12 20:57:45 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/26 01:38:31 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,4 @@ char	*get_next_line(int fd)
 	treat_line(&line, buf, i, index);
 	index = i;
 	return (line);
-}
-
-int main()
-{
-	write(2, "Error\n", 6);
 }
