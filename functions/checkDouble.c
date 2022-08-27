@@ -1,10 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkDouble.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 16:58:45 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/27 21:50:59 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
-void	checkDouble(long *pt, int size, stack *a)
+void	handle_error(long *pt, int *i, t_stack *a, t_node *top)
+{
+	if (pt[*i] == a -> head -> num)
+	{
+		if ((*i) != 0)
+		{
+			write(2, "Error\n", 6);
+			exit(1);
+		}
+		(*i)++;
+		a -> head = top;
+	}
+}
+
+void	checkdouble(long *pt, int size, t_stack *a)
 {
 	int		i;
-	node 	*top;
+	t_node	*top;
 
 	i = 0;
 	push(pt[0], a);
@@ -15,23 +41,15 @@ void	checkDouble(long *pt, int size, stack *a)
 		{
 			if (a -> head -> next == NULL)
 			{
-				Sortpush(pt[i], a);
+				sortpush(pt[i], a);
 				i++;
 				a -> head = top;
 			}
 			else
 				a -> head = a -> head -> next;
 		}
-		else if (pt[i] == a -> head -> num)
-		{
-			if (i != 0)
-			{
-				write(2, "Error\n", 6);
-				exit(1);
-			}
-			i++;
-			a -> head = top;
-		}
+		else
+			handle_error(pt, &i, a, top);
 	}
 	free(pt);
 }

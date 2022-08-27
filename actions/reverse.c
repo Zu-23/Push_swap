@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   reverse.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 16:59:27 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/27 21:57:34 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
-void	reverse(stack *stk)
+void	reverse(t_stack *stk)
 {
-	node	*tmp;
+	t_node	*tmp;
 
-	if (Empty(stk) || stk -> head -> next == NULL )
-        return;
+	if (empty(stk) || stk -> head -> next == NULL )
+		return ;
 	tmp = stk -> head;
 	while (tmp)
 	{
 		if (tmp -> next == NULL)
 		{
 			tmp -> next = stk -> head;
-			break;
+			break ;
 		}
 		tmp = tmp -> next;
 	}
@@ -23,7 +35,7 @@ void	reverse(stack *stk)
 		if (tmp -> next == stk -> head)
 		{
 			tmp -> next = NULL;
-			break;
+			break ;
 		}
 		tmp = tmp -> next;
 	}

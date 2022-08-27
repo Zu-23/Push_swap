@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 01:15:20 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/26 18:30:58 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/27 22:16:33 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 #include "functions.h"
 #include "get_next_line/get_next_line.h"
 
-void	stack_status(stack *a)
+void	stack_status(t_stack *a)
 {
-	node	*tmp;
+	t_node	*tmp;
 
 	tmp = a -> head;
 	while (tmp->next)
@@ -30,7 +30,7 @@ void	stack_status(stack *a)
 	}
 	ft_printf("OK\n");
 }
-void	check_which_stack(char *str, stack *a, stack *b)
+void	check_which_stack(char *str, t_stack *a, t_stack *b)
 {
 	int i;
 	int	hint;
@@ -71,7 +71,7 @@ void	check_str(char *str)
 		exit(1);
 	} 
 }
-void    checker(stack *a, stack *b)
+void    checker(t_stack *a, t_stack *b)
 {
 	char    *str; 
 
@@ -87,8 +87,8 @@ void    checker(stack *a, stack *b)
 }
 int main(int argc, char **argv)
 {
-	stack	a;
-	stack	b;
+	t_stack	a;
+	t_stack	b;
 	int		var[2];
 	long 	*array;
 
@@ -102,6 +102,6 @@ int main(int argc, char **argv)
 	while (++var[1] < argc)
 		super_atoi(&array,argv[var[1]], var[0]);
 	max_min_int(array, var[0]);
-	checkDouble(array, var[0], &a);
+	checkdouble(array, var[0], &a);
 	checker(&a, &b);
 }

@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Sortpush.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 16:58:14 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/27 21:55:58 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
-void	Sortpush(int num, stack *top)
+void	sortpush(int num, t_stack *top)
 {
-	node *tmp;
+	t_node	*tmp;
 
-	tmp = malloc(sizeof(node));
+	tmp = malloc(sizeof(t_node));
 	if (!tmp)
 		exit (1);
 	tmp -> num = num;
 	tmp -> next = NULL;
 	if (top -> head != NULL )
 		top -> head -> next = tmp;
-	else	
+	else
 		top -> head = tmp;
 }

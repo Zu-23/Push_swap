@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   find_min_ndx.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 16:58:30 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/27 21:53:26 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
-int	find_min_ndx(stack *a)
+int	find_min_ndx(t_stack *a)
 {
 	int		min;
-	node	*tmp;
+	t_node	*tmp;
 	int		loc;
 	int		ndx;
 

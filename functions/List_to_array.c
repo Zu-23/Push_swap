@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   List_to_array.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 16:58:25 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/27 21:54:29 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
@@ -9,47 +21,47 @@ int	lta_val_i(int size, int n)
 	while (1)
 	{
 		if (i == size - 1)
-			break;
+			break ;
 		else if (i == n - 1)
-			break;
+			break ;
 		i++;
 	}
 	return (i);
 }
 
-void arraySort(int *arr, int size)
+void	arraysort(int *arr, int size)
 {
-    int	i;
+	int	i;
 	int	j;
 	int	tmp;
 
 	i = 0;
-    while (i < size - 1)
-    {
+	while (i < size - 1)
+	{
 		j = 0;
-        while (j < size - i - 1)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                tmp = arr[j];
+		while (j < size - i - 1)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				tmp = arr[j];
 				arr[j] = arr[j + 1];
 				arr[j + 1] = tmp;
-            }
-            j++;
-        }
-        i++;
-    }
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
-int	List_to_array(stack *a, int n)
+int	list_to_array(t_stack *a, int n)
 {
 	int		*ar;
 	int		i;
 	int		size;
-	node	*tmp;
+	t_node	*tmp;
 
 	tmp = a -> head;
-	size = stackSize(a);
+	size = stacksize(a);
 	ar = malloc(sizeof(int) * size);
 	i = 0;
 	while (tmp)
@@ -57,7 +69,7 @@ int	List_to_array(stack *a, int n)
 		ar[i++] = tmp -> num;
 		tmp = tmp -> next;
 	}
-	arraySort(ar, size);
+	arraysort(ar, size);
 	i = lta_val_i(size, n);
 	i = ar[i];
 	free(ar);

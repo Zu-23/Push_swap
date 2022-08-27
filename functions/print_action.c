@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_action.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/27 16:58:20 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/27 21:54:54 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
 int	ft_strcmp(char *s1, char *s2)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
@@ -11,12 +23,12 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	print_action_aux(char *str, char c, stack *x, stack *y)
+void	print_action_aux(char *str, char c, t_stack *x, t_stack *y)
 {
 	if (c == 'a')
 	{
 		if (ft_strcmp(str, "r") == 0)
-			print_action("ra\n",x, y, 0);
+			print_action("ra\n", x, y, 0);
 		else if (ft_strcmp(str, "rr") == 0)
 			print_action("rra\n", x, y, 0);
 		else if (ft_strcmp(str, "p") == 0)
@@ -25,7 +37,7 @@ void	print_action_aux(char *str, char c, stack *x, stack *y)
 	else if (c == 'b')
 	{
 		if (ft_strcmp(str, "r") == 0)
-			print_action("rb\n",x, y, 0);
+			print_action("rb\n", x, y, 0);
 		else if (ft_strcmp(str, "rr") == 0)
 			print_action("rrb\n", x, y, 0);
 		else if (ft_strcmp(str, "p") == 0)
@@ -33,7 +45,7 @@ void	print_action_aux(char *str, char c, stack *x, stack *y)
 	}
 }
 
-void	print_action(char *str, stack *x, stack *y, int chk)
+void	print_action(char *str, t_stack *x, t_stack *y, int chk)
 {
 	if (ft_strcmp(str, "sa\n") == 0 || ft_strcmp(str, "sb\n") == 0)
 		swap(x);
@@ -48,7 +60,7 @@ void	print_action(char *str, stack *x, stack *y, int chk)
 	else if (ft_strcmp(str, "rrr\n") == 0)
 		rrr(x, y);
 	else if (ft_strcmp(str, "pa\n") == 0 || ft_strcmp(str, "pb\n") == 0)
-		pushStack(x, y);
+		pushstack(x, y);
 	if (chk == 0)
-		ft_printf("%s",str);
+		ft_printf("%s", str);
 }
