@@ -90,6 +90,6 @@ void	find_first_min(stack *a, stack *b)
 	find_second_min(b, min_ar, ndx_ar);
 	min_push(a, b, ndx_ar);
 	if (a -> head -> num > a -> head -> next -> num)
-		swap(a);
+		print_action("sa\n", a, b, 0);
 
 }

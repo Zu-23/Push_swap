@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 16:28:03 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/26 19:13:09 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/27 16:41:42 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,4 @@ void	hundred(stack *a, stack *b, int n)
 	}
 	while (b -> head)
 		find_first_min(a, b);
-	node *tmp = a ->head;
-	while (tmp)
-	{
-		ft_printf("%d\n",tmp->num);
-		tmp = tmp->next;
-	}
 }

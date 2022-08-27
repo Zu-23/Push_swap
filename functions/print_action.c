@@ -50,5 +50,5 @@ void	print_action(char *str, stack *x, stack *y, int chk)
 	else if (ft_strcmp(str, "pa\n") == 0 || ft_strcmp(str, "pb\n") == 0)
 		pushStack(x, y);
 	if (chk == 0)
-		ft_printf("%s\n",str);
+		ft_printf("%s",str);
 }
