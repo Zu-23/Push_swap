@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   super_strlen.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/27 16:57:51 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/27 21:35:52 by zhaddoum         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../actions.h"
 #include "../functions.h"
 
@@ -19,12 +7,6 @@ int	ft_isdigit(int c)
 		return (1);
 	else
 		return (0);
-}
-
-void	print_error(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
 }
 
 int	super_strlen(char **str, int argc)
@@ -41,15 +23,21 @@ int	super_strlen(char **str, int argc)
 		while (ft_isdigit(str[i][k]) == 1 || str[i][k] == '-')
 		{
 			k++;
-			if (str[i][k] == '\0')
+			if (str[i][k] == ' ')
+			{
 				count++;
-			else if (str[i][k++] == ' ')
+				k++;
+			}
+			else if (str[i][k] == '\0')
 				count++;
 		}
 		if (str[i][k] != '\0')
-			print_error();
+		{
+			write(2, "Error\n", 6);
+			exit(1);
+		}
 		k = 0;
-		i++;
+		i++;	
 	}
 	return (count);
 }
