@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 01:15:26 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/27 22:46:44 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:57:51 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	main(int argc, char **argv)
 	a.head = NULL;
 	b.head = NULL;
 	array = NULL;
+	if (argc < 2)
+		exit(1);
 	var[0] = super_strlen(argv, argc);
 	var[1] = 0;
 	while (++var[1] < argc)
