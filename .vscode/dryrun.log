@@ -1,6 +1,7 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/zhaddoum/Desktop/git_ps'
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/zhaddoum/Desktop/working'
 gcc -Wall -Werror -Wextra -c actions/rrr.c -o actions/rrr.o
+ 
 gcc -Wall -Werror -Wextra -c actions/reverse.c -o actions/reverse.o
 gcc -Wall -Werror -Wextra -c actions/rotate.c -o actions/rotate.o
 gcc -Wall -Werror -Wextra -c actions/rr.c -o actions/rr.o
@@ -24,8 +25,11 @@ gcc -Wall -Werror -Wextra -c functions/push.c -o functions/push.o
 gcc -Wall -Werror -Wextra -c functions/Empty.c -o functions/Empty.o
 gcc -Wall -Werror -Wextra -c functions/Delete.c -o functions/Delete.o
 gcc -Wall -Werror -Wextra -c functions/checkDouble.c -o functions/checkDouble.o
-ar rcs ObjectPushSwap.a actions/rrr.o actions/reverse.o actions/rotate.o actions/rr.o actions/pushStack.o actions/ss.o actions/swap.o functions/super_atoi.o functions/super_strlen.o functions/stackSize.o functions/Sortpush.o functions/List_to_array.o functions/go_to_ndx.o functions/find_max_ndx.o functions/find_min_ndx.o functions/find_first_min.o functions/five.o functions/hundred.o functions/three.o functions/print_action.o functions/push.o functions/Empty.o functions/Delete.o functions/checkDouble.o
+gcc -Wall -Werror -Wextra -c functions/max_min_int.c -o functions/max_min_int.o
+gcc -Wall -Werror -Wextra -c get_next_line/get_next_line.c -o get_next_line/get_next_line.o
+ar rcs ObjectPushSwap.a actions/rrr.o actions/reverse.o actions/rotate.o actions/rr.o actions/pushStack.o actions/ss.o actions/swap.o functions/super_atoi.o functions/super_strlen.o functions/stackSize.o functions/Sortpush.o functions/List_to_array.o functions/go_to_ndx.o functions/find_max_ndx.o functions/find_min_ndx.o functions/find_first_min.o functions/five.o functions/hundred.o functions/three.o functions/print_action.o functions/push.o functions/Empty.o functions/Delete.o functions/checkDouble.o functions/max_min_int.o get_next_line/get_next_line.o
 cd ft_printf && make
 gcc -Wall -Werror -Wextra main.c ObjectPushSwap.a ft_printf/libftprintf.a -o Push_swap
-make: Leaving directory `/Users/zhaddoum/Desktop/git_ps'
+gcc -Wall -Werror -Wextra checker_bonus.c ObjectPushSwap.a ft_printf/libftprintf.a -o checker
+make: Leaving directory `/Users/zhaddoum/Desktop/working'
  

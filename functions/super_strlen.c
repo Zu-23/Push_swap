@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   super_strlen.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/08/28 21:24:40 by zhaddoum          #+#    #+#             */
+/*   Updated: 2022/08/28 21:54:41 by zhaddoum         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../actions.h"
 #include "../functions.h"
 
@@ -7,6 +19,17 @@ int	ft_isdigit(int c)
 		return (1);
 	else
 		return (0);
+}
+
+void	sub_strlen(char **str, int *k, int *i, int *count)
+{
+	if (str[(*i)][(*k)] == ' ' && ft_isdigit(str[(*i)][(*k) - 1]))
+	{
+		(*count)++;
+		(*k)++;
+	}
+	else if (str[(*i)][(*k)] == '\0')
+		(*count)++;
 }
 
 int	super_strlen(char **str, int argc)
@@ -20,16 +43,10 @@ int	super_strlen(char **str, int argc)
 	k = 0;
 	while (i < argc)
 	{
-		while (ft_isdigit(str[i][k]) == 1 || str[i][k] == '-')
+		while (ft_isdigit(str[i][k]) || str[i][k] == '-')
 		{
 			k++;
-			if (str[i][k] == ' ')
-			{
-				count++;
-				k++;
-			}
-			else if (str[i][k] == '\0')
-				count++;
+			sub_strlen(str, &k, &i, &count);
 		}
 		if (str[i][k] != '\0')
 		{
@@ -37,7 +54,7 @@ int	super_strlen(char **str, int argc)
 			exit(1);
 		}
 		k = 0;
-		i++;	
+		i++;
 	}
 	return (count);
 }

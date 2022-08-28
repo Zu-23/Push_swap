@@ -6,14 +6,14 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:59:35 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/27 21:58:19 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:16:23 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../actions.h"
 #include "../functions.h"
 
-void rrr(t_stack *a, t_stack *b)
+void	rrr(t_stack *a, t_stack *b)
 {
 	reverse(a);
 	reverse(b);

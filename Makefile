@@ -6,7 +6,7 @@
 #    By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/26 16:28:08 by zhaddoum          #+#    #+#              #
-#    Updated: 2022/08/26 18:43:40 by zhaddoum         ###   ########.fr        #
+#    Updated: 2022/08/28 21:51:17 by zhaddoum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ $(COMPILE): $(NAME)
 	$(CC) main.c $(NAME) ft_printf/libftprintf.a -o $(COMPILE)
 
 $(BONUS): $(NAME) 
-	$(CC) checker.c $(NAME) ft_printf/libftprintf.a -o checker
+	$(CC) checker_bonus.c $(NAME) ft_printf/libftprintf.a -o checker
 
 clean:
 	$(RM) $(OBJ)

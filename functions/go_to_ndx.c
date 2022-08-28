@@ -6,12 +6,20 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 15:58:42 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/27 21:53:51 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/28 21:24:07 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../actions.h"
 #include "../functions.h"
+
+void	gotoindx_norm(char c, t_stack *a, t_stack *b)
+{
+	if (c == 'a')
+		print_action_aux("p", 'b', a, b);
+	else if (c == 'b')
+		print_action_aux("p", 'a', a, b);
+}
 
 void	go_to_index(t_stack *a, t_stack *b, int ndx, char c)
 {
@@ -37,8 +45,5 @@ void	go_to_index(t_stack *a, t_stack *b, int ndx, char c)
 			size--;
 		}
 	}
-	if (c == 'a')
-		print_action_aux("p", 'b', a, b);
-	else if (c == 'b')
-		print_action_aux("p", 'a', a, b);
+	gotoindx_norm(c, a, b);
 }
