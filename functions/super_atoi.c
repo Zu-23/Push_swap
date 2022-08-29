@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:57:54 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/27 22:47:15 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/29 01:53:55 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ int	allspaces(char c)
 	return (1);
 }
 
-void	after_int(char c, t_var *var, int *i)
+void	sign_int(char *ptr, t_var *var, int *i)
 {
-	if (c == '-' || c == '+')
+	if (ptr[(*i)] == '-' || ptr[(*i)] == '+')
 	{
-		if (c == '-')
-		var -> sign *= -1;
+		if (ptr[(*i)] == '-')
+			var -> sign *= -1;
 		*i += 1;
 	}
 }
@@ -45,7 +45,7 @@ void	super_atoi(long **ar, char *ptr, int count)
 		*ar = malloc(sizeof(long) * count);
 	while (ptr[i])
 	{
-		after_int(ptr[i], &var, &i);
+		sign_int(ptr, &var, &i);
 		while (ptr[i] >= '0' && ptr[i] <= '9')
 			var.ret = var.ret * 10 + (ptr[i++] - 48);
 		if (ptr[i] && allspaces(ptr[i++]) == 0)

@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:24:40 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/28 21:54:41 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/29 02:45:04 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@ int	ft_isdigit(int c)
 
 void	sub_strlen(char **str, int *k, int *i, int *count)
 {
-	if (str[(*i)][(*k)] == ' ' && ft_isdigit(str[(*i)][(*k) - 1]))
+	if ((str[(*i)][(*k)] == ' ' && (*k) == 0)
+		|| (str[(*i)][(*k)] == ' ' && str[(*i)][(*k) - 1] == ' '))
+	{
+		while (str[(*i)][(*k)] == ' ')
+			(*k)++;
+		return ;
+	}	
+	else if (str[(*i)][(*k)] == ' ' && ft_isdigit(str[(*i)][(*k) - 1]))
 	{
 		(*count)++;
 		(*k)++;
 	}
-	else if (str[(*i)][(*k)] == '\0')
+	else if (str[(*i)][(*k)] == '\0' && str[(*i)][(*k) - 1] != ' ')
 		(*count)++;
 }
 
@@ -43,16 +50,15 @@ int	super_strlen(char **str, int argc)
 	k = 0;
 	while (i < argc)
 	{
-		while (ft_isdigit(str[i][k]) || str[i][k] == '-')
+		sub_strlen(str, &k, &i, &count);
+		while (ft_isdigit(str[i][k]) || str[i][k] == '-' || str[i][k] == '+'
+			|| str[i][k] == ' ')
 		{
 			k++;
 			sub_strlen(str, &k, &i, &count);
 		}
 		if (str[i][k] != '\0')
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+			sub_strlen(str, &k, &i, &count);
 		k = 0;
 		i++;
 	}

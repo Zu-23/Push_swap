@@ -1,7 +1,6 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/zhaddoum/Desktop/working'
 gcc -Wall -Werror -Wextra -c actions/rrr.c -o actions/rrr.o
- 
 gcc -Wall -Werror -Wextra -c actions/reverse.c -o actions/reverse.o
 gcc -Wall -Werror -Wextra -c actions/rotate.c -o actions/rotate.o
 gcc -Wall -Werror -Wextra -c actions/rr.c -o actions/rr.o

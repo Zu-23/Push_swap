@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Sun Aug 28 21:54:24 2022
+# Make data base, printed on Mon Aug 29 01:57:07 2022
 
 # Variables
 
@@ -45,7 +45,7 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 44)
 BONUS = bonus
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000c_vc0032pv/T/vscode-ipc-eedfc8a8-884f-46ac-96f7-5c1081e14c9c.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000c_vc0032pv/T/vscode-ipc-dd88eb2d-c202-446c-9cd4-8f43e0ef562e.sock
 # environment
 VSCODE_CWD = /
 # environment
@@ -477,6 +477,6 @@ functions/Delete.o:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Sun Aug 28 21:54:24 2022
+# Finished Make data base on Mon Aug 29 01:57:07 2022
 
  

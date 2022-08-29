@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 01:15:26 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/28 21:57:51 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/08/29 02:03:21 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,12 @@ void	push_swap(t_stack *a, t_stack *b)
 		hundred(a, b, size / 16);
 }
 
+void	free_stack(t_stack *a)
+{
+	while (a->head)
+		delete(a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	a;
@@ -47,9 +53,12 @@ int	main(int argc, char **argv)
 		exit(1);
 	var[0] = super_strlen(argv, argc);
 	var[1] = 0;
+	ft_printf("size %d\n",var[0]);
 	while (++var[1] < argc)
 		super_atoi(&array, argv[var[1]], var[0]);
 	max_min_int(array, var[0]);
 	checkdouble(array, var[0], &a);
 	push_swap(&a, &b);
+	free_stack(&a);
+	return (0);
 }
