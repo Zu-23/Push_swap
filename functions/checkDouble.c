@@ -34,11 +34,6 @@ void	checkdouble(long *pt, int size, t_stack *a)
 
 
 	i = 0;
-	// while (i < size)
-	// {
-	// 	ft_printf("%d\n",pt[i]);
-	// 	i++;
-	// }
 	push(pt[0], a);
 	top = a -> head;
 	while (i < size)

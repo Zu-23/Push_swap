@@ -20,22 +20,31 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
-
+void	check_non_digit(char **str, int *k, int *i)
+{
+	if (str[*i][*k] != ' ' && ft_isdigit(str[*i][*k]) == 0
+	&& str[*i][*k] != '\0' && str[*i][*k] != '-' && str[*i][*k] != '+' )
+	{
+		write(1, "Er3or\n", 6);
+		exit(1);
+	}
+}
 void	sub_strlen(char **str, int *k, int *i, int *count)
 {
-	if ((str[(*i)][(*k)] == ' ' && (*k) == 0)
-		|| (str[(*i)][(*k)] == ' ' && str[(*i)][(*k) - 1] == ' '))
+	check_non_digit(str, k, i);
+	if ((str[*i][*k] == ' ' && (*k) == 0)
+		|| (str[*i][*k] == ' ' && str[*i][*k - 1] == ' '))
 	{
-		while (str[(*i)][(*k)] == ' ')
+		while (str[*i][*k] == ' ')
 			(*k)++;
 		return ;
 	}	
-	else if (str[(*i)][(*k)] == ' ' && ft_isdigit(str[(*i)][(*k) - 1]))
+	else if (str[*i][*k] == ' ' && ft_isdigit(str[*i][*k - 1]))
 	{
 		(*count)++;
 		(*k)++;
 	}
-	else if (str[(*i)][(*k)] == '\0' && str[(*i)][(*k) - 1] != ' ')
+	else if (str[*i][*k] == '\0' && str[*i][*k - 1] != ' ')
 		(*count)++;
 }
 

@@ -61,7 +61,7 @@ void	print_action_aux(char *str, char c, t_stack *x, t_stack *y);
 
 /*		super atoi		*/
 void	super_atoi(long **ar, char *ptr, int count);
-int		allspaces(char c);
+void	allspaces(char *str, int *i);
 void	after_int(char c, t_var *var, int *i);
 
 /*		super strlen	*/
