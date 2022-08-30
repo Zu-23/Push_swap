@@ -362,7 +362,7 @@ void	handle_error(int *pt, int *i, stack *a, node *top)
 	{
 		if ((*i) != 0)
 		{
-			write(2, "Error\n", 6);
+			write(2, "E3ror\n", 6);
 			exit(1);
 		}
 		(*i)++;

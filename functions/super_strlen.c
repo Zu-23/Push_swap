@@ -25,7 +25,7 @@ void	check_non_digit(char **str, int *k, int *i)
 	if (str[*i][*k] != ' ' && ft_isdigit(str[*i][*k]) == 0
 	&& str[*i][*k] != '\0' && str[*i][*k] != '-' && str[*i][*k] != '+' )
 	{
-		write(1, "Er3or\n", 6);
+		write(1, "Error\n", 6);
 		exit(1);
 	}
 }

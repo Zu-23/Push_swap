@@ -41,11 +41,4 @@ void	hundred(t_stack *a, t_stack *b, int n)
 	}
 	while (b -> head)
 		find_first_min(a, b);
-	
-	t_node *tmp = a->head;
-	while (tmp)
-	{
-		ft_printf("%d\n",tmp->num);
-		tmp = tmp->next;
-	}
 }

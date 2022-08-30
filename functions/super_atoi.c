@@ -46,7 +46,7 @@ void    super_atoi(long **ar, char *ptr, int count)
 	var_declare(&var);
     i = 0;
     if (!*ar)
-        *ar = malloc(sizeof(int) * count);
+        *ar = malloc(sizeof(long) * count);
     while(ptr[i])
     {
         after_int(ptr[i], &var, &i);

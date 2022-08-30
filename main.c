@@ -53,15 +53,11 @@ int	main(int argc, char **argv)
 		exit(1);
 	var[0] = super_strlen(argv, argc);
 	var[1] = 0;
-	ft_printf("size %d\n",var[0]);
 	while (++var[1] < argc)
 		super_atoi(&array, argv[var[1]], var[0]);
-	ft_printf("crash after atoi\n");
 	max_min_int(array, var[0]);
-	ft_printf("crash after double\n");
 	checkdouble(array, var[0], &a);
 	push_swap(&a, &b);
-	ft_printf("crash after pushswap\n");
 	free_stack(&a);
 	return (0);
 }
