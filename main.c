@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 01:15:26 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/29 02:03:21 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:44:08 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,22 @@ void	free_stack(t_stack *a)
 		delete(a);
 }
 
+void	sorted(long	*ar, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size - 1)
+	{
+		if (ar[i] < ar[i + 1])
+			i++;
+		else
+			return ;
+	}
+	if (i == size - 1)
+		exit(1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	a;
@@ -56,6 +72,7 @@ int	main(int argc, char **argv)
 	while (++var[1] < argc)
 		super_atoi(&array, argv[var[1]], var[0]);
 	max_min_int(array, var[0]);
+	sorted(array, var[0]);
 	checkdouble(array, var[0], &a);
 	push_swap(&a, &b);
 	free_stack(&a);

@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:57:54 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/29 01:53:55 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:36:34 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,24 @@ void	after_int(char c, t_var *var, int *i)
 
 void	allspaces(char *str, int *i)
 {
+	int	counter;
+	int	j;
+
+	counter = 0;
+	j = 0;
 	while (str[*i] == ' ')
 		(*i)++;
+	while (str[j])
+	{
+		if (ft_isdigit(str[j]))
+			counter++;
+		j++;
+	}
+	if (counter == 0)
+	{
+		write (2, "Error\n", 6);
+		exit(1);
+	}
 }
 
 void	var_declare(t_var *var)

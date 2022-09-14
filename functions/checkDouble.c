@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:58:45 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/29 02:03:32 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/14 13:59:05 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	checkdouble(long *pt, int size, t_stack *a)
 {
 	int		i;
 	t_node	*top;
-
 
 	i = 0;
 	push(pt[0], a);

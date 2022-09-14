@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 16:59:02 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/27 22:45:31 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/14 17:30:18 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,4 @@ void	after_int(char c, t_var *var, int *i);
 /*		super strlen	*/
 int		super_strlen(char **str, int argc);
 int		ft_isdigit(int c);
-
 #endif

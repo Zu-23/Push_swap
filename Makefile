@@ -6,7 +6,7 @@
 #    By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/26 16:28:08 by zhaddoum          #+#    #+#              #
-#    Updated: 2022/08/28 21:51:17 by zhaddoum         ###   ########.fr        #
+#    Updated: 2022/09/14 17:29:31 by zhaddoum         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,20 @@ functions/Delete.c \
 functions/checkDouble.c \
 functions/max_min_int.c \
 get_next_line/get_next_line.c \
+main.c \
 
 NAME=ObjectPushSwap.a
-COMPILE=Push_swap
+COMPILE=push_swap
 BONUS=bonus
 CC=gcc -Wall -Werror -Wextra
 AR= ar rcs
 OBJ=$(SRC:.c=.o)
+HEADER= *.h
 RM=rm -f
 
-all: $(NAME) $(COMPILE) $(BONUS)
+all: $(NAME) $(COMPILE)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADER)
 	$(AR) $(NAME) $(OBJ)
 
 %.o: %.c 
@@ -63,7 +65,7 @@ $(BONUS): $(NAME)
 	$(CC) checker_bonus.c $(NAME) ft_printf/libftprintf.a -o checker
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ) ft_printf/*.o ft_printf/*.a
 
 fclean: clean
 	$(RM) $(NAME) $(COMPILE) checker

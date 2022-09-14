@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:24:40 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/08/29 02:45:04 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/14 13:59:40 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	ft_isdigit(int c)
 	else
 		return (0);
 }
+
 void	check_non_digit(char **str, int *k, int *i)
 {
 	if (str[*i][*k] != ' ' && ft_isdigit(str[*i][*k]) == 0
@@ -29,6 +30,7 @@ void	check_non_digit(char **str, int *k, int *i)
 		exit(1);
 	}
 }
+
 void	sub_strlen(char **str, int *k, int *i, int *count)
 {
 	check_non_digit(str, k, i);
