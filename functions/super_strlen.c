@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 21:24:40 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/09/14 13:59:40 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/16 15:55:45 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ int	ft_isdigit(int c)
 
 void	check_non_digit(char **str, int *k, int *i)
 {
+	int	y;
+
+	y = 0;
+	while (str[y])
+	{
+		if (str[y][0] == '\0')
+		{
+			write (2, "Error\n", 6);
+			exit(1);
+		}
+		y++;
+	}
 	if (str[*i][*k] != ' ' && ft_isdigit(str[*i][*k]) == 0
 	&& str[*i][*k] != '\0' && str[*i][*k] != '-' && str[*i][*k] != '+' )
 	{
