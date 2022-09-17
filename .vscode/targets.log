@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Fri Sep 16 15:50:02 2022
+# Make data base, printed on Sat Sep 17 19:28:42 2022
 
 # Variables
 
@@ -29,7 +29,7 @@ VSCODE_LOG_NATIVE = false
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/zhaddoum/Desktop/Push_swap
+CURDIR := /Users/zhaddoum/Desktop/to_pus_ps
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 50)
@@ -45,9 +45,11 @@ VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 45)
 BONUS = bonus
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000c_vc0032pv/T/vscode-ipc-2d9afd66-7a73-43bc-a7db-5d7c5664a0c9.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n000c_vc0032pv/T/vscode-ipc-29d17b1c-bc05-4d9c-b947-87c053972177.sock
 # environment
 VSCODE_CWD = /
+# environment
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.Ef6KobrQpR/Render
 # environment
 PATH = /Users/zhaddoum/goinfre/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
 # environment
@@ -61,13 +63,13 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.8NjRTKMf1P/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.kmRdOtWaeO/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-PWD = /Users/zhaddoum/Desktop/Push_swap
+PWD = /Users/zhaddoum/Desktop/to_pus_ps
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -129,7 +131,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1184
+XPC_SERVICE_NAME = com.microsoft.VSCode.1240
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -159,9 +161,9 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 4664
+VSCODE_PID = 29152
 # variable set hash-table stats:
-# Load=74/1024=7%, Rehash=0, Collisions=3/108=3%
+# Load=75/1024=7%, Rehash=0, Collisions=3/109=3%
 
 # Pattern-specific Variable Values
 
@@ -169,12 +171,12 @@ VSCODE_PID = 4664
 
 # Directories
 
-# actions (device 16777225, inode 355253): 15 files, no impossibilities so far.
-# . (device 16777225, inode 355183): 17 files, no impossibilities.
-# functions (device 16777225, inode 348405): 37 files, no impossibilities so far.
-# get_next_line (device 16777225, inode 355298): 3 files, no impossibilities so far.
+# actions (device 16777227, inode 440005): 15 files, no impossibilities so far.
+# . (device 16777227, inode 439935): 16 files, no impossibilities.
+# functions (device 16777227, inode 440024): 37 files, no impossibilities so far.
+# get_next_line (device 16777227, inode 440043): 3 files, no impossibilities so far.
 
-# 72 files, no impossibilities in 4 directories.
+# 71 files, no impossibilities in 4 directories.
 
 # Implicit Rules
 
@@ -183,7 +185,6 @@ VSCODE_PID = 4664
 	$(CC) -c $< -o $@
 	
 
- 
 # 1 implicit rules, 0 (0.0%) terminal.
 
 # Files
@@ -191,7 +192,7 @@ VSCODE_PID = 4664
 # Not a target:
 functions/checkDouble.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -200,7 +201,7 @@ functions/checkDouble.c:
 # Not a target:
 functions.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:30:18
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -209,7 +210,7 @@ functions.h:
 # Not a target:
 functions/super_atoi.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:36:34
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -218,7 +219,7 @@ functions/super_atoi.c:
 # Not a target:
 functions/max_min_int.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -227,7 +228,7 @@ functions/max_min_int.c:
 # Not a target:
 functions/five.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -236,7 +237,7 @@ functions/five.c:
 # Not a target:
 functions/find_first_min.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -255,7 +256,7 @@ all: ObjectPushSwap.a push_swap
 # Not a target:
 functions/push.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -269,7 +270,7 @@ functions/push.c:
 # Not a target:
 functions/hundred.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -278,7 +279,7 @@ functions/hundred.c:
 # Not a target:
 main.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:44:08
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -287,7 +288,7 @@ main.c:
 # Not a target:
 functions/stackSize.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -296,7 +297,7 @@ functions/stackSize.c:
 # Not a target:
 functions/Empty.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -304,8 +305,9 @@ functions/Empty.c:
 
 # Not a target:
 actions/reverse.c:
+ 
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -314,7 +316,7 @@ actions/reverse.c:
 # Not a target:
 functions/super_strlen.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -323,7 +325,7 @@ functions/super_strlen.c:
 # Not a target:
 actions/rr.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -332,7 +334,7 @@ actions/rr.c:
 functions/print_action.o: functions/print_action.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/print_action'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -350,7 +352,7 @@ functions/print_action.o: functions/print_action.c
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:29:31
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -359,7 +361,7 @@ Makefile:
 actions/swap.o: actions/swap.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/swap'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -371,7 +373,7 @@ actions/swap.o: actions/swap.c
 actions/rrr.o: actions/rrr.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/rrr'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -383,7 +385,7 @@ actions/rrr.o: actions/rrr.c
 functions/List_to_array.o: functions/List_to_array.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/List_to_array'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -395,7 +397,7 @@ functions/List_to_array.o: functions/List_to_array.c
 functions/find_max_ndx.o: functions/find_max_ndx.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/find_max_ndx'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -407,7 +409,7 @@ functions/find_max_ndx.o: functions/find_max_ndx.c
 functions/Sortpush.o: functions/Sortpush.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/Sortpush'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -419,7 +421,7 @@ functions/Sortpush.o: functions/Sortpush.c
 functions/find_min_ndx.o: functions/find_min_ndx.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/find_min_ndx'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -440,7 +442,7 @@ bonus: ObjectPushSwap.a
 # Not a target:
 functions/List_to_array.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -458,7 +460,7 @@ fclean: clean
 actions/ss.o: actions/ss.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/ss'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -470,9 +472,8 @@ actions/ss.o: actions/ss.c
 actions/rotate.o: actions/rotate.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/rotate'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
- 
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
@@ -483,7 +484,7 @@ actions/rotate.o: actions/rotate.c
 # Not a target:
 functions/Delete.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -492,7 +493,7 @@ functions/Delete.c:
 actions/pushStack.o: actions/pushStack.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/pushStack'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -504,7 +505,7 @@ actions/pushStack.o: actions/pushStack.c
 get_next_line/get_next_line.o: get_next_line/get_next_line.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `get_next_line/get_next_line'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -520,9 +521,10 @@ get_next_line/get_next_line.o: get_next_line/get_next_line.c
 #  File has not been updated.
 
 # Not a target:
+ 
 functions/print_action.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -531,7 +533,7 @@ functions/print_action.c:
 functions/go_to_ndx.o: functions/go_to_ndx.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/go_to_ndx'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -558,7 +560,7 @@ clean:
 # Not a target:
 actions/swap.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -567,7 +569,7 @@ actions/swap.c:
 functions/checkDouble.o: functions/checkDouble.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/checkDouble'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -579,7 +581,7 @@ functions/checkDouble.o: functions/checkDouble.c
 # Not a target:
 actions/rrr.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -587,7 +589,7 @@ actions/rrr.c:
 
 push_swap: ObjectPushSwap.a
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 61):
@@ -598,7 +600,7 @@ push_swap: ObjectPushSwap.a
 functions/super_atoi.o: functions/super_atoi.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/super_atoi'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -610,7 +612,7 @@ functions/super_atoi.o: functions/super_atoi.c
 functions/max_min_int.o: functions/max_min_int.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/max_min_int'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -622,7 +624,7 @@ functions/max_min_int.o: functions/max_min_int.c
 # Not a target:
 functions/find_max_ndx.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -631,7 +633,7 @@ functions/find_max_ndx.c:
 functions/five.o: functions/five.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/five'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -643,7 +645,7 @@ functions/five.o: functions/five.c
 functions/find_first_min.o: functions/find_first_min.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/find_first_min'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -655,7 +657,7 @@ functions/find_first_min.o: functions/find_first_min.c
 # Not a target:
 actions.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -664,7 +666,7 @@ actions.h:
 # Not a target:
 functions/Sortpush.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -673,7 +675,7 @@ functions/Sortpush.c:
 functions/push.o: functions/push.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/push'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -685,7 +687,7 @@ functions/push.o: functions/push.c
 # Not a target:
 functions/find_min_ndx.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -694,7 +696,7 @@ functions/find_min_ndx.c:
 functions/hundred.o: functions/hundred.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/hundred'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -706,7 +708,7 @@ functions/hundred.o: functions/hundred.c
 main.o: main.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `main'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -718,7 +720,7 @@ main.o: main.c
 functions/stackSize.o: functions/stackSize.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/stackSize'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -730,7 +732,7 @@ functions/stackSize.o: functions/stackSize.c
 # Not a target:
 actions/ss.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -739,7 +741,7 @@ actions/ss.c:
 functions/Empty.o: functions/Empty.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/Empty'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -751,8 +753,7 @@ functions/Empty.o: functions/Empty.c
 actions/reverse.o: actions/reverse.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/reverse'
-#  Last modified 2022-09-16 15:48:40
- 
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -764,7 +765,7 @@ actions/reverse.o: actions/reverse.c
 functions/super_strlen.o: functions/super_strlen.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/super_strlen'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -776,7 +777,7 @@ functions/super_strlen.o: functions/super_strlen.c
 actions/rr.o: actions/rr.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `actions/rr'
-#  Last modified 2022-09-16 15:48:40
+#  Last modified 2022-09-17 19:28:34
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -788,7 +789,7 @@ actions/rr.o: actions/rr.c
 # Not a target:
 actions/rotate.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -797,16 +798,17 @@ actions/rotate.c:
 # Not a target:
 actions/pushStack.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
+ 
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 get_next_line/get_next_line.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 17:45:40
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -814,7 +816,7 @@ get_next_line/get_next_line.c:
 
 ObjectPushSwap.a: actions/rrr.o actions/reverse.o actions/rotate.o actions/rr.o actions/pushStack.o actions/ss.o actions/swap.o functions/super_atoi.o functions/super_strlen.o functions/stackSize.o functions/Sortpush.o functions/List_to_array.o functions/go_to_ndx.o functions/find_max_ndx.o functions/find_min_ndx.o functions/find_first_min.o functions/five.o functions/hundred.o functions/three.o functions/print_action.o functions/push.o functions/Empty.o functions/Delete.o functions/checkDouble.o functions/max_min_int.o get_next_line/get_next_line.o main.o actions.h functions.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -826,7 +828,7 @@ ObjectPushSwap.a: actions/rrr.o actions/reverse.o actions/rotate.o actions/rr.o 
 # Not a target:
 functions/three.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:44
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -835,7 +837,7 @@ functions/three.c:
 # Not a target:
 functions/go_to_ndx.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-09-14 15:55:50
+#  Last modified 2022-09-17 14:53:43
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -844,7 +846,7 @@ functions/go_to_ndx.c:
 functions/three.o: functions/three.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/three'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -856,7 +858,7 @@ functions/three.o: functions/three.c
 functions/Delete.o: functions/Delete.c
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: `functions/Delete'
-#  Last modified 2022-09-16 15:48:41
+#  Last modified 2022-09-17 19:28:35
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -878,6 +880,6 @@ functions/Delete.o: functions/Delete.c
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Fri Sep 16 15:50:02 2022
+# Finished Make data base on Sat Sep 17 19:28:42 2022
 
  

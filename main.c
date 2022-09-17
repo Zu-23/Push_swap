@@ -6,7 +6,7 @@
 /*   By: zhaddoum <zhaddoum@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 01:15:26 by zhaddoum          #+#    #+#             */
-/*   Updated: 2022/09/16 16:04:51 by zhaddoum         ###   ########.fr       */
+/*   Updated: 2022/09/17 19:29:53 by zhaddoum         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	main(int argc, char **argv)
 	checkdouble(array, var[0], &a);
 	push_swap(&a, &b);
 	free_stack(&a);
+	system("leaks push_swap");
 	return (0);
 }

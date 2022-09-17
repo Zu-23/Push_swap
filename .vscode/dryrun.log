@@ -1,6 +1,5 @@
 make --dry-run --always-make --keep-going --print-directory
-make: Entering directory `/Users/zhaddoum/Desktop/Push_swap'
- 
+make: Entering directory `/Users/zhaddoum/Desktop/to_pus_ps'
 gcc -Wall -Werror -Wextra -c actions/rrr.c -o actions/rrr.o
 gcc -Wall -Werror -Wextra -c actions/reverse.c -o actions/reverse.o
 gcc -Wall -Werror -Wextra -c actions/rotate.c -o actions/rotate.o
@@ -31,5 +30,5 @@ gcc -Wall -Werror -Wextra -c main.c -o main.o
 ar rcs ObjectPushSwap.a actions/rrr.o actions/reverse.o actions/rotate.o actions/rr.o actions/pushStack.o actions/ss.o actions/swap.o functions/super_atoi.o functions/super_strlen.o functions/stackSize.o functions/Sortpush.o functions/List_to_array.o functions/go_to_ndx.o functions/find_max_ndx.o functions/find_min_ndx.o functions/find_first_min.o functions/five.o functions/hundred.o functions/three.o functions/print_action.o functions/push.o functions/Empty.o functions/Delete.o functions/checkDouble.o functions/max_min_int.o get_next_line/get_next_line.o main.o
 cd ft_printf && make
 gcc -Wall -Werror -Wextra main.c ObjectPushSwap.a ft_printf/libftprintf.a -o push_swap
-make: Leaving directory `/Users/zhaddoum/Desktop/Push_swap'
+make: Leaving directory `/Users/zhaddoum/Desktop/to_pus_ps'
  
